@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhruv Patel Profile — Cricket Player, Toronto Peshwas | Career Stats &amp; Sponsorship</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0273E3;
+    --blue-dark:#03559E;
+    --navy:#12239E;
+    --ink:#1B1B1B;
+    --gray-7:#444;
+    --gray-5:#6B7280;
+    --gray-3:#D1D5DB;
+    --gray-2:#E5E7EB;
+    --gray-1:#F1F2F4;
+    --white:#FFFFFF;
+    --gold:#C99700;
+    --green:#0E7A3D;
+    --hero-grad: linear-gradient(105deg, #071B4E 0%, #12239E 55%, #0273E3 120%);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--gray-1); color:var(--ink);
+    font-family:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    font-size:14px; line-height:1.5;
+  }
+  a{ color:var(--blue); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  :focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+
+  .container{ max-width:1152px; margin:0 auto; padding:0 16px; }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    background:var(--white); border-bottom:1px solid var(--gray-2);
+    position:sticky; top:0; z-index:60;
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:52px;
+  }
+  .brand{
+    font-weight:800; font-size:15px; letter-spacing:-0.01em; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .ball{
+    width:18px; height:18px; border-radius:50%; background:var(--navy);
+    position:relative; flex-shrink:0;
+  }
+  .brand .ball::after{
+    content:''; position:absolute; left:50%; top:2px; bottom:2px; width:1.5px;
+    background:rgba(255,255,255,0.7); transform:translateX(-50%) rotate(18deg);
+  }
+  .topnav{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  .topnav a{
+    color:var(--gray-7); font-weight:600; font-size:13px;
+  }
+  .topnav a:hover{ color:var(--blue); text-decoration:none; }
+  .top-cta{
+    background:var(--blue); color:#fff !important; padding:7px 14px; border-radius:4px;
+    font-weight:700; font-size:12.5px;
+  }
+  .top-cta:hover{ background:var(--blue-dark); text-decoration:none !important; }
+  @media (max-width:720px){ .topnav{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--hero-grad); color:#fff; }
+  .hero-inner{
+    display:flex; align-items:flex-end; gap:28px; padding:34px 0 0;
+    flex-wrap:wrap;
+  }
+  .headshot{
+    width:148px; height:148px; border-radius:50%;
+    background:#fff; border:4px solid rgba(255,255,255,0.85);
+    display:flex; align-items:center; justify-content:center;
+    font-size:52px; font-weight:800; color:var(--navy);
+    margin-bottom:22px; flex-shrink:0;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  }
+  .hero-id{ flex:1; min-width:260px; padding-bottom:22px; }
+  .hero-country{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    color:rgba(255,255,255,0.85); margin-bottom:6px;
+  }
+  .hero-country .flag{
+    display:inline-block; width:20px; height:13px; border-radius:2px;
+    background:linear-gradient(90deg,#D52B1E 0 25%, #fff 25% 75%, #D52B1E 75%);
+    position:relative;
+  }
+  .hero-country .flag::after{
+    content:'🍁'; position:absolute; inset:0; font-size:9px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero h1{
+    margin:0; font-size:clamp(28px, 4.5vw, 42px); font-weight:800; letter-spacing:-0.02em;
+    line-height:1.05;
+  }
+  .hero-sub{
+    margin-top:6px; color:rgba(255,255,255,0.85); font-size:14px; font-weight:500;
+  }
+  .hero-sub b{ color:#fff; }
+  .hero-badges{ display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+  .badge{
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.25);
+    padding:4px 10px; border-radius:99px; font-size:11.5px; font-weight:600;
+  }
+  .badge.gold{ background:rgba(201,151,0,0.28); border-color:rgba(255,214,90,0.55); }
+
+  .hero-keystats{
+    display:flex; gap:0; padding-bottom:22px; margin-left:auto;
+  }
+  .hk{
+    padding:10px 22px; border-left:1px solid rgba(255,255,255,0.2); text-align:left;
+  }
+  .hk:first-child{ border-left:none; }
+  .hk b{ display:block; font-size:26px; font-weight:800; line-height:1.1; }
+  .hk span{ font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.75); }
+  @media (max-width:900px){
+    .hero-keystats{ margin-left:0; width:100%; border-top:1px solid rgba(255,255,255,0.2); padding-top:14px; }
+    .hk{ padding:0 22px 0 0; border-left:none; }
+  }
+
+  .hero-tabs{
+    display:flex; gap:2px; border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .hero-tabs a{
+    color:rgba(255,255,255,0.8); font-weight:700; font-size:13px;
+    padding:13px 18px; border-bottom:3px solid transparent;
+  }
+  .hero-tabs a:hover{ color:#fff; text-decoration:none; }
+  .hero-tabs a.active{ color:#fff; border-bottom-color:#fff; }
+
+  /* ---------- LAYOUT ---------- */
+  .page{
+    display:grid; grid-template-columns:300px 1fr; gap:20px;
+    padding:20px 0 48px; align-items:start;
+  }
+  @media (max-width:880px){ .page{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--white); border:1px solid var(--gray-2); border-radius:8px;
+    overflow:hidden;
+  }
+  .card + .card{ margin-top:20px; }
+  .card-head{
+    padding:14px 18px; border-bottom:1px solid var(--gray-2);
+    display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+  }
+  .card-head h2{
+    margin:0; font-size:16px; font-weight:800; letter-spacing:-0.01em;
+  }
+  .card-head .sub{ font-size:12px; color:var(--gray-5); font-weight:500; }
+  .card-body{ padding:16px 18px; }
+
+  /* ---------- INFO SIDEBAR ---------- */
+  .info-list{ margin:0; padding:0; }
+  .info-list div{ padding:11px 18px; border-bottom:1px solid var(--gray-1); }
+  .info-list div:last-child{ border-bottom:none; }
+  .info-list dt{
+    font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--gray-5); margin-bottom:2px;
+  }
+  .info-list dd{ margin:0; font-size:14px; font-weight:600; }
+
+  .teams-list{ list-style:none; margin:0; padding:0; }
+  .teams-list li{
+    padding:10px 18px; border-bottom:1px solid var(--gray-1);
+    display:flex; align-items:center; gap:10px; font-weight:600; font-size:13.5px;
+  }
+  .teams-list li:last-child{ border-bottom:none; }
+  .team-dot{
+    width:26px; height:26px; border-radius:50%; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10.5px; font-weight:800; color:#fff;
+  }
+  .teams-list small{ display:block; font-weight:500; color:var(--gray-5); font-size:11.5px; }
+
+  .sponsor-card{
+    background:linear-gradient(160deg,#071B4E, #12239E);
+    color:#fff; border:none;
+  }
+  .sponsor-card .card-body{ padding:20px 18px; }
+  .sponsor-card h2{ margin:0 0 8px; font-size:17px; font-weight:800; color:#fff; }
+  .sponsor-card p{ margin:0 0 16px; font-size:13px; color:rgba(255,255,255,0.85); }
+  .sponsor-card a.btn{
+    display:block; text-align:center; background:#fff; color:var(--navy);
+    font-weight:800; font-size:13px; padding:11px; border-radius:5px;
+  }
+  .sponsor-card a.btn:hover{ text-decoration:none; background:var(--gray-1); }
+
+  /* ---------- STAT TABLES ---------- */
+  .table-scroll{ overflow-x:auto; }
+  table.stats{
+    width:100%; border-collapse:collapse; font-size:13px; white-space:nowrap;
+  }
+  table.stats th{
+    background:var(--gray-1); color:var(--gray-7);
+    font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    text-align:right; padding:9px 12px; border-bottom:1px solid var(--gray-2);
+  }
+  table.stats th:first-child{ text-align:left; }
+  table.stats td{
+    padding:10px 12px; border-bottom:1px solid var(--gray-1);
+    text-align:right; font-variant-numeric:tabular-nums;
+  }
+  table.stats td:first-child{ text-align:left; font-weight:700; }
+  table.stats tr:last-child td{ border-bottom:none; }
+  table.stats tr:hover td{ background:#F7FAFF; }
+  td.hl{ font-weight:700; color:var(--navy); }
+
+  .stat-tabs{
+    display:flex; gap:0; border-bottom:1px solid var(--gray-2); padding:0 18px;
+  }
+  .stat-tabs button{
+    background:none; border:none; font:inherit; cursor:pointer;
+    font-weight:700; font-size:13.5px; color:var(--gray-5);
+    padding:13px 16px; border-bottom:3px solid transparent;
+  }
+  .stat-tabs button.active{ color:var(--blue); border-bottom-color:var(--blue); }
+  .stat-tabs button:hover{ color:var(--ink); }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+  .table-footnote{
+    padding:10px 18px 14px; font-size:11.5px; color:var(--gray-5);
+  }
+
+  /* Recent matches */
+  .match-bat{ color:var(--green); font-weight:700; }
+  .match-bowl{ color:var(--navy); font-weight:700; }
+  td.fixture{ font-weight:600 !important; max-width:280px; white-space:normal !important; }
+  td.fixture small{ display:block; color:var(--gray-5); font-weight:500; }
+
+  /* Season by season */
+  .trend-cell{ display:flex; align-items:center; justify-content:flex-end; gap:8px; }
+  .spark{
+    display:inline-block; height:8px; border-radius:99px; background:var(--blue);
+    opacity:0.85;
+  }
+
+  /* Highlights */
+  .highlights{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  @media (max-width:680px){ .highlights{ grid-template-columns:1fr; } }
+  .hl-card{
+    border:1px solid var(--gray-2); border-radius:8px; padding:16px;
+    background:linear-gradient(180deg,#FBFCFF,#fff);
+  }
+  .hl-card b{ display:block; font-size:22px; font-weight:800; color:var(--navy); letter-spacing:-0.01em; }
+  .hl-card span{ font-size:12.5px; color:var(--gray-7); font-weight:500; }
+  .hl-card .tag{
+    display:inline-block; margin-bottom:8px; font-size:10.5px; font-weight:800;
+    letter-spacing:0.07em; text-transform:uppercase; color:var(--gold);
+  }
+
+  /* Contact */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  @media (max-width:680px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-grid > div{ padding:14px 18px; border-bottom:1px solid var(--gray-1); }
+  .contact-grid dt{ font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--gray-5); }
+  .contact-grid dd{ margin:2px 0 0; font-weight:600; font-size:14.5px; }
+
+  footer{
+    background:var(--white); border-top:1px solid var(--gray-2);
+    padding:20px 0; font-size:12px; color:var(--gray-5);
+  }
+  footer .container{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="brand"><span class="ball" aria-hidden="true"></span> Dhruv Patel · Player Profile</span>
+    <ul class="topnav">
+      <li><a href="#averages">Career Averages</a></li>
+      <li><a href="#seasons">Season by Season</a></li>
+      <li><a href="#matches">Recent Matches</a></li>
+      <li><a href="#contact" class="top-cta">Sponsor Dhruv</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="headshot" aria-label="Dhruv Patel headshot placeholder">DP</div>
+      <div class="hero-id">
+        <span class="hero-country"><span class="flag" aria-hidden="true"></span> Greater Toronto Area, Canada</span>
+        <h1>Dhruv Patel</h1>
+        <p class="hero-sub">All-rounder · <b>Toronto Peshwas</b>, GTA Peshwas &amp; GTA Mitron · Age 27</p>
+        <div class="hero-badges">
+          <span class="badge gold">★ Career-best 6/12 in 5 overs</span>
+          <span class="badge">Hat-trick taker</span>
+          <span class="badge">12 leagues &amp; clubs</span>
+        </div>
+      </div>
+      <div class="hero-keystats">
+        <div class="hk"><b>230</b><span>Matches</span></div>
+        <div class="hk"><b>196</b><span>Wickets</span></div>
+        <div class="hk"><b>507</b><span>Runs</span></div>
+      </div>
+    </div>
+    <nav class="hero-tabs">
+      <a href="#averages" class="active">Overview</a>
+      <a href="#seasons">Stats</a>
+      <a href="#matches">Matches</a>
+      <a href="#contact">Sponsorship</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+
+  <!-- ===== LEFT SIDEBAR ===== -->
+  <aside>
+    <div class="card">
+      <div class="card-head"><h2>Player Information</h2></div>
+      <dl class="info-list">
+        <div><dt>Full Name</dt><dd>Dhruv Patel</dd></div>
+        <div><dt>Age</dt><dd>27</dd></div>
+        <div><dt>Playing Role</dt><dd>All-rounder</dd></div>
+        <div><dt>Batting Style</dt><dd>Right-hand bat (middle order)</dd></div>
+        <div><dt>Bowling Style</dt><dd>Right-arm medium</dd></div>
+        <div><dt>Jersey Number</dt><dd>69</dd></div>
+        <div><dt>CricClubs Player ID</dt><dd>2793593</dd></div>
+        <div><dt>Base</dt><dd>Vaughan, Ontario</dd></div>
+      </dl>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Current Teams</h2><span class="sub">2026</span></div>
+      <ul class="teams-list">
+        <li><span class="team-dot" style="background:#5B21B6">TP</span><span>Toronto Peshwas<small>BEDCL · T25, Division H</small></span></li>
+        <li><span class="team-dot" style="background:#0273E3">GP</span><span>GTA Peshwas<small>BEDCL · T20, Division B</small></span></li>
+        <li><span class="team-dot" style="background:#B45309">GM</span><span>GTA Mitron<small>BEDCL · 50-Overs, Division D</small></span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>Also Played For</h2></div>
+      <ul class="teams-list">
+        <li><span class="team-dot" style="background:#0E7A3D">S6</span><span>Super 6ixers<small>Mississauga Cricket League</small></span></li>
+        <li><span class="team-dot" style="background:#9C2B24">SC</span><span>Stouffville CC<small>York Region Cricket Association</small></span></li>
+      </ul>
+    </div>
+
+    <div class="card sponsor-card">
+      <div class="card-body">
+        <h2>Sponsorship 2026</h2>
+        <p>Kit, equipment and match-day branding opportunities with a player active in multiple GTA leagues every week of the season.</p>
+        <a class="btn" href="#contact">View sponsorship details</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN COLUMN ===== -->
+  <section>
+
+    <!-- Career highlights -->
+    <div class="card" id="highlights">
+      <div class="card-head"><h2>Career Highlights</h2></div>
+      <div class="card-body highlights">
+        <div class="hl-card">
+          <span class="tag">Best Bowling</span>
+          <b>6/12 (5 ov)</b>
+          <span>Career-best spell, incl. a hat-trick — Toronto Peshwas, BEDCL T25</span>
+        </div>
+        <div class="hl-card">
+          <span class="tag">2026 Form</span>
+          <b>13.10 avg</b>
+          <span>Bowling average this T25 season — a career-best year with the ball</span>
+        </div>
+        <div class="hl-card">
+          <span class="tag">Workhorse</span>
+          <b>662 overs</b>
+          <span>Bowled across all formats — trusted with the ball in every phase</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career averages -->
+    <div class="card" id="averages">
+      <div class="card-head">
+        <h2>Career Averages</h2>
+        <span class="sub">All leagues combined · updated Jul 2026</span>
+      </div>
+      <div class="stat-tabs" role="tablist">
+        <button class="active" role="tab" aria-selected="true" data-tab="bowling">Bowling</button>
+        <button role="tab" aria-selected="false" data-tab="batting">Batting &amp; Fielding</button>
+      </div>
+
+      <div class="tab-panel active" id="panel-bowling" role="tabpanel">
+        <div class="table-scroll">
+          <table class="stats">
+            <thead>
+              <tr>
+                <th>Format</th><th>Mat</th><th>Overs</th><th>Runs</th><th>Wkts</th>
+                <th>BBI</th><th>Ave</th><th>Econ</th><th>SR</th><th>4w</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>T25</td><td>86</td><td>274.3</td><td>1864</td><td class="hl">83</td><td class="hl">6/12</td><td>22.46</td><td>6.79</td><td>19.8</td><td>1</td></tr>
+              <tr><td>T10</td><td>55</td><td>131.4</td><td>1029</td><td class="hl">53</td><td class="hl">4/14</td><td>19.42</td><td>7.81</td><td>14.9</td><td>2</td></tr>
+              <tr><td>T20</td><td>67</td><td>183.5</td><td>1622</td><td class="hl">38</td><td>3/28</td><td>42.68</td><td>8.82</td><td>29.0</td><td>0</td></tr>
+              <tr><td>One Day</td><td>16</td><td>58.5</td><td>297</td><td class="hl">17</td><td class="hl">4/24</td><td class="hl">17.47</td><td class="hl">5.05</td><td>20.8</td><td>1</td></tr>
+              <tr><td>100-Ball</td><td>6</td><td>13.2</td><td>171</td><td class="hl">5</td><td>3/50</td><td>34.20</td><td>12.83</td><td>16.0</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-footnote">BEDCL figures (71 matches, 73 wickets, 2022–26 — incl. T20 for GTA Peshwas and 50-overs for GTA Mitron) taken from the official BEDCL stats portal, which is scored separately from CricClubs. All other leagues from CricClubs records. Format totals reconcile to <b>230 matches and 196 wickets</b>.</p>
+      </div>
+
+      <div class="tab-panel" id="panel-batting" role="tabpanel">
+        <div class="table-scroll">
+          <table class="stats">
+            <thead>
+              <tr>
+                <th>Format</th><th>Mat</th><th>Inns</th><th>NO</th><th>Runs</th>
+                <th>HS</th><th>Ave</th><th>25s</th><th>4s</th><th>6s</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>T25</td><td>86</td><td>47</td><td>28</td><td class="hl">245</td><td class="hl">26</td><td>12.89</td><td>1</td><td>—</td><td>—</td></tr>
+              <tr><td>T20</td><td>67</td><td>29</td><td>20</td><td class="hl">139</td><td>25</td><td class="hl">15.44</td><td>1</td><td>—</td><td>—</td></tr>
+              <tr><td>T10</td><td>55</td><td>17</td><td>9</td><td class="hl">79</td><td>13</td><td>9.88</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>One Day</td><td>16</td><td>7</td><td>3</td><td class="hl">40</td><td>21</td><td>10.00</td><td>0</td><td>3</td><td>0</td></tr>
+              <tr><td>100-Ball</td><td>6</td><td>1</td><td>1</td><td class="hl">4</td><td>4</td><td>—</td><td>0</td><td>0</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-footnote">Lower-middle-order finisher's profile: 20 not-outs in 29 T20 innings. BEDCL batting from the official BEDCL portal; boundary counts (4s/6s) shown only where the source records them.</p>
+      </div>
+    </div>
+
+    <!-- Season by season -->
+    <div class="card" id="seasons">
+      <div class="card-head">
+        <h2>Season by Season — Toronto Peshwas (BEDCL T25)</h2>
+        <span class="sub">Primary competition</span>
+      </div>
+      <div class="table-scroll">
+        <table class="stats">
+          <thead>
+            <tr>
+              <th>Season</th><th>Div</th><th>Mat</th><th>Overs</th><th>Runs (bat)</th><th>Wkts</th><th>Bowl Ave</th><th style="text-align:right">Wicket Trend</th>
+            </tr>
+          </thead>
+          <tbody id="seasonRows"></tbody>
+        </table>
+      </div>
+      <p class="table-footnote">Bowling average improving four straight windows: 28.20 (2023) → 25.82 (2024) → 23.79 (2025) → <b>13.10 (2026)</b>. Also in 2026: 7 wickets @ 23.14 in T20 for GTA Peshwas and 4/24 on 50-overs debut for GTA Mitron.</p>
+    </div>
+
+    <!-- Recent matches -->
+    <div class="card" id="matches">
+      <div class="card-head"><h2>Recent Matches</h2><span class="sub">Jun–Jul 2026</span></div>
+      <div class="table-scroll">
+        <table class="stats">
+          <thead>
+            <tr><th>Format</th><th style="text-align:left">Match</th><th>Bat</th><th>Bowl</th><th>Date</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>T25</td>
+              <td class="fixture">Pegasus vs Toronto Peshwas<small>BEDCL Division H</small></td>
+              <td class="match-bat">4 (4)</td><td class="match-bowl">0/12</td><td>Jul 19, 2026</td>
+            </tr>
+            <tr>
+              <td>T20</td>
+              <td class="fixture">Super 6ixers vs Madras Mavericks CC<small>Mississauga Cricket League</small></td>
+              <td class="match-bat">0</td><td class="match-bowl">0/25</td><td>Jul 8, 2026</td>
+            </tr>
+            <tr>
+              <td>One Day</td>
+              <td class="fixture">Toronto Reapers vs Toronto Peshwas<small>MCL 50-over</small></td>
+              <td class="match-bat">0</td><td class="match-bowl">1/33</td><td>Jul 4, 2026</td>
+            </tr>
+            <tr>
+              <td>T20</td>
+              <td class="fixture">Super 6ixers vs Pegasus Sporting Club<small>Mississauga Cricket League</small></td>
+              <td class="match-bat">0</td><td class="match-bowl">0/16</td><td>Jul 4, 2026</td>
+            </tr>
+            <tr>
+              <td>T25</td>
+              <td class="fixture">Toronto Peshwas vs Topfellas Hurricanes<small>BEDCL Division H</small></td>
+              <td class="match-bat">3 (3)</td><td class="match-bowl">1/3</td><td>Jun 22, 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- League footprint -->
+    <div class="card" id="leagues">
+      <div class="card-head"><h2>League Footprint</h2><span class="sub">12 leagues &amp; clubs</span></div>
+      <div class="table-scroll">
+        <table class="stats">
+          <thead>
+            <tr><th style="text-align:left">League / Club</th><th>Mat</th><th>Runs</th><th>Wkts</th></tr>
+          </thead>
+          <tbody id="leagueRows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Sponsorship / contact -->
+    <div class="card" id="contact">
+      <div class="card-head"><h2>Sponsorship &amp; Contact</h2><span class="sub">Season 2026</span></div>
+      <div class="card-body" style="padding-bottom:0;">
+        <p style="margin:0 0 4px; font-size:14px; color:var(--gray-7); max-width:64ch;">
+          Dhruv plays across three active teams and multiple GTA leagues simultaneously — kit and equipment
+          branding gets repeat, weekly exposure to cricket communities in Brampton, Etobicoke, Mississauga,
+          Vaughan and York Region. Open to kit sponsorship, equipment partnerships and match-day activations.
+        </p>
+      </div>
+      <dl class="contact-grid">
+        <div><dt>Phone</dt><dd><a href="tel:+12498774428">(249) 877-4428</a></dd></div>
+        <div><dt>CricClubs ID</dt><dd>2793593</dd></div>
+        <div><dt>Primary Club</dt><dd>Toronto Peshwas Cricket Club</dd></div>
+        <div><dt>Location</dt><dd>Vaughan, Ontario, Canada</dd></div>
+      </dl>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>BEDCL statistics from the official BEDCL portal (stats.bedcl.cricket); all other leagues from CricClubs records · Updated July 2026</span>
+    <span>Dhruv Patel · Player sponsorship portfolio</span>
+  </div>
+</footer>
+
+<script>
+  // ---- Tabs ----
+  document.querySelectorAll('.stat-tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.stat-tabs button').forEach(b => {
+        b.classList.remove('active'); b.setAttribute('aria-selected','false');
+      });
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ---- Season rows with wicket trend bars ----
+  const seasons = [
+    { s:'2022 Morning T25', div:'2B', mat:14, overs:'42.0', runs:9,  wkts:11, ave:'23.18' },
+    { s:'2023 Morning T25', div:'H',  mat:12, overs:'41.0', runs:23, wkts:10, ave:'28.20' },
+    { s:'2024 T25',         div:'H',  mat:16, overs:'57.1', runs:60, wkts:17, ave:'25.82' },
+    { s:'2025 T25',         div:'H',  mat:14, overs:'51.2', runs:60, wkts:14, ave:'23.79' },
+    { s:'2026 T25 ★',       div:'H',  mat:7,  overs:'21.5', runs:34, wkts:10, ave:'13.10' },
+  ];
+  const maxW = Math.max(...seasons.map(x => x.wkts));
+  const tbody = document.getElementById('seasonRows');
+  seasons.forEach(x => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${x.s}</td><td>${x.div}</td><td>${x.mat}</td><td>${x.overs}</td>
+      <td>${x.runs}</td><td class="hl">${x.wkts}</td><td>${x.ave}</td>
+      <td><span class="trend-cell"><span class="spark" style="width:${18 + (x.wkts/maxW)*70}px"></span></span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // ---- League footprint ----
+  const leagues = [
+    { name:'Lakeshore Cricket League (T10)', mat:48, runs:61, wkts:47 },
+    { name:'Mississauga Cricket League', mat:48, runs:162, wkts:36 },
+    { name:'Brampton-Etobicoke & District CL — official BEDCL portal (T25/T20/50-ov)', mat:71, runs:218, wkts:73 },
+    { name:'Brampton Cricket Championship', mat:32, runs:32, wkts:23 },
+    { name:'BPL Canada', mat:10, runs:0, wkts:2 },
+    { name:'Toronto Mississauga Cricket Club', mat:9, runs:0, wkts:6 },
+    { name:'York Region Cricket Association', mat:7, runs:6, wkts:7 },
+    { name:'Markham Premier Cricket League', mat:2, runs:25, wkts:0 },
+    { name:'Vaughan Premier Cricket League', mat:1, runs:3, wkts:0 },
+    { name:'TDF Cricket Club', mat:1, runs:0, wkts:2 },
+    { name:'Toronto District Cricket Association', mat:1, runs:0, wkts:0 },
+  ];
+  const lb = document.getElementById('leagueRows');
+  leagues.forEach(l => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${l.name}</td><td>${l.mat}</td><td>${l.runs}</td><td class="hl">${l.wkts}</td>`;
+    lb.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>
