@@ -892,7 +892,7 @@
           </a>
         </div>
 
-        <h3 class="watch-head">Match video <span>Toronto Peshwas on YouTube</span></h3>
+        <h3 class="watch-head">Latest video <span>Updates automatically</span></h3>
         <div class="yt-grid" id="ytGrid"></div>
       </div>
     </div>
@@ -1004,39 +1004,81 @@ sbBody.appendChild(tr);});
     lb.appendChild(tr);
   });
 
-  // ---- Match video ------------------------------------------------------
-  // Facade pattern: render a thumbnail + play button, and only inject the
-  // YouTube iframe once someone actually clicks. Keeps ~1MB of third-party
-  // script off the initial page load, which matters most on mobile data.
-  const VIDEOS = [
-    { id:'hEbQoZxZjkM', t:'Toronto Peshwas vs Ontario Cricket Academy', s:'BEDCL' },
-    { id:'H_c6Snk2OMk', t:'Toronto Peshwas vs Halton', s:'Match highlights' },
-    { id:'cFt1J0fxvtc', t:'Drone view of a match day', s:'Toronto Peshwas' }
+  // ---- Latest video ------------------------------------------------------
+  // The tiles below ship with the page so the section is never empty. On load
+  // we ask /.netlify/functions/latest-videos for the newest uploads across both
+  // club channels (that function reads YouTube's public RSS server-side,
+  // because the browser can't — no CORS headers, and no API key needed).
+  // If it's unreachable, the shipped tiles stay put.
+  const FALLBACK = [
+    { id:'hEbQoZxZjkM', title:'Toronto Peshwas vs Ontario Cricket Academy', channel:'Toronto Peshwas' },
+    { id:'H_c6Snk2OMk', title:'Toronto Peshwas vs Halton', channel:'Toronto Peshwas' },
+    { id:'cFt1J0fxvtc', title:'Drone view of a match day', channel:'Toronto Peshwas' }
   ];
 
-  (function renderVideos(){
-    const grid = document.getElementById('ytGrid');
-    if(!grid) return;
-    VIDEOS.forEach(v => {
+  const grid = document.getElementById('ytGrid');
+
+  const when = iso => {
+    if(!iso) return '';
+    const days = Math.floor((Date.now() - new Date(iso)) / 86400000);
+    if(days <= 0) return 'today';
+    if(days === 1) return 'yesterday';
+    if(days < 30) return days + ' days ago';
+    const mo = Math.round(days / 30);
+    return mo + (mo === 1 ? ' month ago' : ' months ago');
+  };
+
+  function paint(videos){
+    if(!grid || !videos.length) return;
+    grid.textContent = '';
+    videos.forEach(v => {
       const fig = document.createElement('figure');
       fig.className = 'vid';
-      fig.innerHTML =
-        '<button class="vid-btn" type="button" aria-label="Play: ' + v.t.replace(/"/g,'') + '">' +
-          '<img src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" onerror="this.style.display=&quot;none&quot;">' +
-          '<span class="vid-play" aria-hidden="true"></span>' +
-        '</button>' +
-        '<figcaption><b>' + v.t + '</b><span>' + v.s + '</span></figcaption>';
-      fig.querySelector('.vid-btn').addEventListener('click', function(){
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'vid-btn';
+      btn.setAttribute('aria-label', 'Play: ' + v.title);
+
+      const img = document.createElement('img');
+      img.src = 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg';
+      img.alt = '';
+      img.loading = 'lazy';
+      img.width = 480; img.height = 360;
+      img.onerror = () => { img.style.display = 'none'; };
+
+      const play = document.createElement('span');
+      play.className = 'vid-play';
+      play.setAttribute('aria-hidden','true');
+      btn.append(img, play);
+
+      btn.addEventListener('click', () => {
         const f = document.createElement('iframe');
         f.src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0';
-        f.title = v.t;
+        f.title = v.title;
         f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
         f.allowFullscreen = true;
-        this.replaceWith(f);
+        btn.replaceWith(f);
       });
+
+      const cap = document.createElement('figcaption');
+      const t = document.createElement('b');
+      t.textContent = v.title;
+      const meta = document.createElement('span');
+      meta.textContent = [v.channel, when(v.published)].filter(Boolean).join(' \u00b7 ');
+      cap.append(t, meta);
+
+      fig.append(btn, cap);
       grid.appendChild(fig);
     });
-  })();
+  }
+
+  paint(FALLBACK);
+
+  fetch('/.netlify/functions/latest-videos')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => { if(d && Array.isArray(d.videos) && d.videos.length) paint(d.videos); })
+    .catch(() => { /* keep the shipped tiles */ });
 
   // ---- Scroll-spy for both nav rails ------------------------------------
   (function spy(){
