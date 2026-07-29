@@ -542,6 +542,41 @@
     color:var(--muted-2); margin-top:3px;
   }
 
+
+  .ig-grid{
+    display:grid; gap:12px;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  }
+  .ig-post{
+    display:block; border:1px solid var(--line); border-radius:var(--r-sm);
+    overflow:hidden; background:#fff; color:var(--ink) !important;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .ig-post:hover{
+    text-decoration:none !important; border-color:#C13584; transform:translateY(-2px);
+  }
+  .ig-thumb{
+    position:relative; aspect-ratio:1/1;
+    background:linear-gradient(150deg,#241E30,#16131C 60%,#4E2A7A);
+  }
+  .ig-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .ig-thumb .ig-vid{
+    position:absolute; right:7px; top:7px; width:0; height:0;
+    border-style:solid; border-width:6px 0 6px 10px;
+    border-color:transparent transparent transparent #fff;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.6));
+  }
+  .ig-post figcaption{ padding:8px 10px 10px; }
+  .ig-post figcaption p{
+    margin:0; font-size:12px; line-height:1.35; color:var(--ink);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .ig-post figcaption span{
+    display:block; margin-top:5px;
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2);
+  }
+
   /* ---------------- CONTACT ---------------- */
   .contact-grid{
     display:grid; gap:1px; background:var(--line-2);
@@ -892,6 +927,11 @@
           </a>
         </div>
 
+        <div id="igWrap" hidden>
+          <h3 class="watch-head">Latest from Instagram <span>Updates automatically</span></h3>
+          <div class="ig-grid" id="igGrid"></div>
+        </div>
+
         <h3 class="watch-head">Latest video <span>Updates automatically</span></h3>
         <div class="yt-grid" id="ytGrid"></div>
       </div>
@@ -1079,6 +1119,66 @@ sbBody.appendChild(tr);});
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => { if(d && Array.isArray(d.videos) && d.videos.length) paint(d.videos); })
     .catch(() => { /* keep the shipped tiles */ });
+
+
+  // ---- Latest Instagram posts --------------------------------------------
+  // /.netlify/functions/latest-posts holds the access tokens server-side (as
+  // Netlify env vars, never in this repo). Until a token is configured it
+  // returns an empty list and this whole block stays hidden, so the profile
+  // links above are always the baseline.
+  (function instagram(){
+    const wrap = document.getElementById('igWrap');
+    const igGrid = document.getElementById('igGrid');
+    if(!wrap || !igGrid) return;
+
+    fetch('/.netlify/functions/latest-posts')
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => {
+        const posts = (d && Array.isArray(d.posts)) ? d.posts : [];
+        if(!posts.length) return;
+        posts.forEach(p => {
+          const a = document.createElement('a');
+          a.className = 'ig-post';
+          a.href = p.permalink;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+
+          const fig = document.createElement('figure');
+          fig.style.margin = '0';
+
+          const thumb = document.createElement('div');
+          thumb.className = 'ig-thumb';
+          const img = document.createElement('img');
+          img.src = p.image;
+          img.alt = '';
+          img.loading = 'lazy';
+          img.onerror = () => { img.style.display = 'none'; };
+          thumb.appendChild(img);
+          if(p.video){
+            const v = document.createElement('span');
+            v.className = 'ig-vid';
+            v.setAttribute('aria-hidden','true');
+            thumb.appendChild(v);
+          }
+
+          const cap = document.createElement('figcaption');
+          if(p.caption){
+            const t = document.createElement('p');
+            t.textContent = p.caption;
+            cap.appendChild(t);
+          }
+          const meta = document.createElement('span');
+          meta.textContent = ['@' + p.handle, when(p.timestamp)].filter(Boolean).join(' \u00b7 ');
+          cap.appendChild(meta);
+
+          fig.append(thumb, cap);
+          a.appendChild(fig);
+          igGrid.appendChild(a);
+        });
+        wrap.hidden = false;
+      })
+      .catch(() => { /* leave hidden */ });
+  })();
 
   // ---- Scroll-spy for both nav rails ------------------------------------
   (function spy(){
