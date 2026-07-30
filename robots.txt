@@ -1,0 +1,6 @@
+# Dhruv Patel — cricket career portal
+User-agent: *
+Allow: /
+Disallow: /.netlify/
+
+Sitemap: https://dhruv-patel-cricket.netlify.app/sitemap.xml

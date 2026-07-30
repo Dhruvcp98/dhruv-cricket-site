@@ -9,6 +9,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#16131C">
 <meta name="description" content="Dhruv Patel — all-rounder, Greater Toronto Area. 235 matches, 204 wickets, career-best 6/12 with a hat-trick. Verified stats and sponsorship enquiries.">
+<link rel="canonical" href="https://dhruv-patel-cricket.netlify.app/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Dhruv Patel">
+
+<!-- Link preview card: shown when this URL is pasted into WhatsApp,
+     iMessage, email, LinkedIn or X. -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Dhruv Patel — Cricket">
+<meta property="og:title" content="Dhruv Patel — All-Rounder, Greater Toronto Area">
+<meta property="og:description" content="235 matches · 204 wickets · 520 runs. Career-best 6/12 with a hat-trick. Captain of Super 6ixers, Vice-Captain of Toronto Peshwas. Verified career stats and 2026 sponsorship enquiries.">
+<meta property="og:url" content="https://dhruv-patel-cricket.netlify.app/">
+<meta property="og:image" content="https://dhruv-patel-cricket.netlify.app/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dhruv Patel in Toronto Peshwas kit beside his career figures: 235 matches, 204 wickets, 520 runs.">
+<meta property="og:locale" content="en_CA">
+<meta property="profile:first_name" content="Dhruv">
+<meta property="profile:last_name" content="Patel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dhruv Patel — All-Rounder, Greater Toronto Area">
+<meta name="twitter:description" content="235 matches · 204 wickets · 520 runs. Career-best 6/12 with a hat-trick. Verified stats and 2026 sponsorship enquiries.">
+<meta name="twitter:image" content="https://dhruv-patel-cricket.netlify.app/og-card.jpg">
+<meta name="twitter:image:alt" content="Dhruv Patel career summary card.">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dhruv Patel",
+  "givenName": "Dhruv",
+  "familyName": "Patel",
+  "url": "https://dhruv-patel-cricket.netlify.app/",
+  "image": "https://dhruv-patel-cricket.netlify.app/og-card.jpg",
+  "jobTitle": "Cricket All-Rounder",
+  "description": "Right-arm medium pace bowler and middle-order batter based in the Greater Toronto Area. 235 matches, 204 wickets, 520 runs across 11 GTA leagues.",
+  "nationality": "Canadian",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Ontario",
+    "addressCountry": "CA"
+  },
+  "telephone": "+1-249-877-4428",
+  "sameAs": [
+    "https://www.instagram.com/dhruvpatell.07/"
+  ],
+  "memberOf": [
+    { "@type": "SportsTeam", "name": "Toronto Peshwas", "sport": "Cricket" },
+    { "@type": "SportsTeam", "name": "Super 6ixers", "sport": "Cricket" },
+    { "@type": "SportsTeam", "name": "GTA Mitron", "sport": "Cricket" },
+    { "@type": "SportsTeam", "name": "Thunderbolts CC", "sport": "Cricket" }
+  ]
+}
+</script>
 <style>
   /* ============================================================
      Palette taken from the Toronto Peshwas playing kit:
@@ -610,9 +667,55 @@
     }
     .social:hover{ transform:none; }
   }
+
+  /* ---- Skip link: first tab stop for keyboard & screen-reader users ---- */
+  .skip-link{
+    position:absolute; left:50%; top:-60px; transform:translateX(-50%);
+    z-index:200; background:var(--ink); color:#fff;
+    padding:11px 20px; border-radius:0 0 var(--r-sm) var(--r-sm);
+    font-size:13.5px; font-weight:600; text-decoration:none;
+    border:2px solid var(--gold); border-top:0;
+    transition:top .15s ease;
+  }
+  .skip-link:focus{ top:0; text-decoration:none; }
+
+  /* ---- Print / "Save as PDF": sponsors often print the pitch ---- */
+  @media print{
+    :root{ --shadow:none; }
+    html{ scroll-behavior:auto; }
+    body{
+      background:#fff; color:#000; font-size:10.5pt; line-height:1.4;
+      overflow-x:visible;
+    }
+    .topbar, .hero-tabs, .skip-link, .top-cta, .vid-play,
+    #follow, .table-scroll::after{ display:none !important; }
+    .hero{ background:#fff !important; color:#000; padding:0 0 12pt; }
+    .hero h1{ color:#000; }
+    .hero-sub, .hero-country, .hero-keystats span{ color:#333 !important; }
+    .hero-keystats b{ color:#000 !important; }
+    .headshot{ border-color:#000; }
+    .badge{ border:1px solid #666 !important; background:#fff !important; color:#000 !important; }
+    .card{
+      break-inside:avoid; page-break-inside:avoid;
+      border:1px solid #bbb; box-shadow:none; background:#fff;
+    }
+    .sponsor-card{ background:#fff !important; color:#000 !important; border-color:#000; }
+    .sponsor-card h2, .sponsor-card *{ color:#000 !important; }
+    h2{ break-after:avoid; page-break-after:avoid; }
+    thead{ display:table-header-group; }
+    tr{ break-inside:avoid; page-break-inside:avoid; }
+    .table-scroll{ overflow:visible !important; }
+    table{ width:100% !important; font-size:9pt; }
+    a{ color:#000; text-decoration:none; }
+    /* Spell out the contact links, since a printed page has nothing to click */
+    a[href^="tel:"]::after{ content:" (" attr(href) ")"; font-size:8.5pt; }
+    @page{ margin:14mm 12mm; }
+  }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to career stats</a>
 
 <div class="topbar">
   <div class="container topbar-inner">
@@ -679,7 +782,7 @@
   </div>
 </header>
 
-<main class="container page">
+<main class="container page" id="main">
 
   <!-- ===== LEFT SIDEBAR ===== -->
   <aside>
@@ -762,10 +865,10 @@
       <div class="tab-panel active" id="panel-bowling" role="tabpanel">
         <div class="table-scroll">
           <table class="stats">
-            <thead>
+            <th scope="col"ead>
               <tr>
-                <th>Format</th><th>Mat</th><th>Overs</th><th>Runs</th><th>Wkts</th>
-                <th>BBI</th><th>Ave</th><th>Econ</th><th>SR</th><th>4w</th>
+                <th scope="col">Format</th><th scope="col">Mat</th><th scope="col">Overs</th><th scope="col">Runs</th><th scope="col">Wkts</th>
+                <th scope="col">BBI</th><th scope="col">Ave</th><th scope="col">Econ</th><th scope="col">SR</th><th scope="col">4w</th>
               </tr>
             </thead>
             <tbody>
@@ -783,10 +886,10 @@
       <div class="tab-panel" id="panel-batting" role="tabpanel">
         <div class="table-scroll">
           <table class="stats">
-            <thead>
+            <th scope="col"ead>
               <tr>
-                <th>Format</th><th>Mat</th><th>Inns</th><th>NO</th><th>Runs</th>
-                <th>HS</th><th>Ave</th><th>25s</th><th>4s</th><th>6s</th>
+                <th scope="col">Format</th><th scope="col">Mat</th><th scope="col">Inns</th><th scope="col">NO</th><th scope="col">Runs</th>
+                <th scope="col">HS</th><th scope="col">Ave</th><th scope="col">25s</th><th scope="col">4s</th><th scope="col">6s</th>
               </tr>
             </thead>
             <tbody>
@@ -798,7 +901,7 @@
             </tbody>
           </table>
         </div>
-        <p class="table-footnote">Lower-middle-order finisher's profile: 20 not-outs in 29 T20 innings. BEDCL batting from the official BEDCL portal; boundary counts (4s/6s) shown only where the source records them.</p>
+        <p class="table-footnote">Lower-middle-order finisher's profile: 20 not-outs in 31 T20 innings. BEDCL batting from the official BEDCL portal; boundary counts (4s/6s) shown only where the source records them.</p>
       </div>
     </div>
 
@@ -810,9 +913,9 @@
       </div>
       <div class="table-scroll">
         <table class="stats">
-          <thead>
+          <th scope="col"ead>
             <tr>
-              <th>Competition</th><th style="text-align:left">Team</th><th>Mat</th><th>Runs</th><th>HS</th><th>Bat Ave</th><th>Overs</th><th>Wkts</th><th>Bowl Ave</th><th>Econ</th>
+              <th scope="col">Competition</th><th scope="col" style="text-align:left">Team</th><th scope="col">Mat</th><th scope="col">Runs</th><th scope="col">HS</th><th scope="col">Bat Ave</th><th scope="col">Overs</th><th scope="col">Wkts</th><th scope="col">Bowl Ave</th><th scope="col">Econ</th>
             </tr>
           </thead>
           <tbody id="sbRows"></tbody>
@@ -826,8 +929,8 @@
       <div class="card-head"><h2>Recent Matches</h2><span class="sub">Jul 2026 · BEDCL portal + CricClubs</span></div>
       <div class="table-scroll">
         <table class="stats">
-          <thead>
-            <tr><th>Format</th><th style="text-align:left">Match</th><th>Bat</th><th>Bowl</th><th>Date</th></tr>
+          <th scope="col"ead>
+            <tr><th scope="col">Format</th><th scope="col" style="text-align:left">Match</th><th scope="col">Bat</th><th scope="col">Bowl</th><th scope="col">Date</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -880,8 +983,8 @@
       <div class="card-head"><h2>League Footprint</h2><span class="sub">12 leagues &amp; clubs</span></div>
       <div class="table-scroll">
         <table class="stats">
-          <thead>
-            <tr><th style="text-align:left">League / Club</th><th>Mat</th><th>Runs</th><th>Wkts</th></tr>
+          <th scope="col"ead>
+            <tr><th scope="col" style="text-align:left">League / Club</th><th scope="col">Mat</th><th scope="col">Runs</th><th scope="col">Wkts</th></tr>
           </thead>
           <tbody id="leagueRows"></tbody>
         </table>
@@ -941,8 +1044,8 @@
     <div class="card" id="contact">
       <div class="card-head"><h2>Sponsorship &amp; Contact</h2><span class="sub">Season 2026</span></div>
       <div class="card-body" style="padding-bottom:0;">
-        <p style="margin:0 0 4px; font-size:14px; color:var(--gray-7); max-width:64ch;">
-          Dhruv plays across three active teams and multiple GTA leagues simultaneously — kit and equipment
+        <p style="margin:0 0 4px; font-size:14px; color:var(--muted); max-width:64ch;">
+          Dhruv plays across four active teams and multiple GTA leagues simultaneously — kit and equipment
           branding gets repeat, weekly exposure to cricket communities in Brampton, Etobicoke, Mississauga,
           Vaughan and York Region. Open to kit sponsorship, equipment partnerships and match-day activations.
         </p>
@@ -1018,7 +1121,7 @@ const sbBody=document.getElementById('sbRows');
 let curY=null;
 SB.forEach(x=>{
 if(x.y!==curY){curY=x.y;const h=document.createElement('tr');h.className='yr';
-h.innerHTML='<td colspan="12">'+(x.y==='n/d'?'Year not recorded by source':'Season '+x.y)+'</td>';sbBody.appendChild(h);}
+h.innerHTML='<td colspan="10">'+(x.y==='n/d'?'Year not recorded by source':'Season '+x.y)+'</td>';sbBody.appendChild(h);}
 const tr=document.createElement('tr');
 tr.innerHTML='<td>'+x.c+'</td><td class="tm">'+x.t+'</td><td>'+x.m+'</td><td>'+x.r+'</td><td>'+x.hs+'</td><td>'+x.ba+'</td><td>'+x.o+'</td><td class="hl">'+x.w+'</td><td'+(x.hi?' class="hl"':'')+'>'+x.bw+'</td><td>'+x.e+'</td>';
 sbBody.appendChild(tr);});
