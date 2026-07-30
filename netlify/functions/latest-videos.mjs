@@ -53,6 +53,9 @@ export default async function handler() {
     'Cache-Control': 'public, max-age=1800, s-maxage=1800',
     'Access-Control-Allow-Origin': '*'
   };
+  // Failures must NOT inherit the 30-minute cache above, or one bad upstream
+  // response would freeze the section for half an hour.
+  const errHeaders = { ...headers, 'Cache-Control': 'no-store' };
 
   try {
     const results = await Promise.allSettled(
@@ -66,23 +69,29 @@ export default async function handler() {
       })
     );
 
-    const videos = results
+    // One guaranteed slot per channel, newest first, then fill any remaining
+    // slots with the newest of whatever is left.
+    const perChannel = results
       .filter(r => r.status === 'fulfilled')
-      .flatMap(r => r.value)
-      .filter(v => v.published)
-      .sort((a, b) => new Date(b.published) - new Date(a.published))
-      .slice(0, LIMIT);
+      .map(r => r.value
+        .filter(v => v.published)
+        .sort((a, b) => new Date(b.published) - new Date(a.published)));
+
+    const byDate = (a, b) => new Date(b.published) - new Date(a.published);
+    const picked = perChannel.map(list => list[0]).filter(Boolean).sort(byDate);
+    const rest = perChannel.flatMap(list => list.slice(1)).sort(byDate);
+    const videos = [...picked, ...rest].slice(0, LIMIT);
 
     if (!videos.length) {
       return new Response(JSON.stringify({ videos: [], error: 'no entries' }), {
-        status: 502, headers
+        status: 502, headers: errHeaders
       });
     }
 
     return new Response(JSON.stringify({ videos }), { status: 200, headers });
   } catch (err) {
     return new Response(JSON.stringify({ videos: [], error: String(err) }), {
-      status: 502, headers
+      status: 502, headers: errHeaders
     });
   }
 }

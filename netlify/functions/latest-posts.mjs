@@ -81,12 +81,15 @@ export default async function handler() {
     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
     .slice(0, TOTAL);
 
-  const failed = settled
-    .filter(r => r.status === 'rejected')
-    .map(r => String(r.reason && r.reason.message ? r.reason.message : r.reason));
+  const failed = settled.filter(r => r.status === 'rejected');
+  // Log details server-side only; the public response just reports a count, so
+  // expired-token messages and HTTP codes are not exposed on the open internet.
+  failed.forEach(r => console.warn('[latest-posts]', r.reason));
 
   return new Response(
-    JSON.stringify({ posts, configured: configured.length, failed }),
-    { status: 200, headers }
+    JSON.stringify({ posts, configured: configured.length, failed: failed.length }),
+    { status: 200, headers: posts.length
+        ? headers
+        : { ...headers, 'Cache-Control': 'no-store' } }
   );
 }
