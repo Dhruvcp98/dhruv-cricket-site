@@ -1,4 +1,4 @@
-name: Watch BEDCL stats
+name: Watch stats
 
 # Runs every morning at 12:10 UTC (08:10 Toronto in summer, 07:10 in winter).
 # Also runnable on demand from the Actions tab.
@@ -19,11 +19,19 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Poll BEDCL
         id: poll
         run: node scripts/check-bedcl-stats.mjs
+
+      # CricClubs hosts the other nine leagues but sits behind Cloudflare.
+      # This probe tells us whether a CI runner can reach it at all, which
+      # decides whether the CricClubs half can be automated here or has to
+      # run from a real browser elsewhere. Never fails the build.
+      - name: Probe CricClubs reachability
+        continue-on-error: true
+        run: bash scripts/probe-cricclubs.sh
 
       - name: Open a pull request if anything moved
         if: steps.poll.outputs.changed == 'true'
