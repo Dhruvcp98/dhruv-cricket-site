@@ -1,0 +1,219 @@
+{
+  "102165|2026 T25 Regular Season|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2026 T25 Regular Season",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "9",
+      "inns": "4",
+      "no": "4",
+      "runs": "34",
+      "ave": "0.00",
+      "hs": "26",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "2",
+      "sixes": "1"
+    },
+    "bowling": {
+      "mat": "9",
+      "overs": "30.5",
+      "mdns": "1",
+      "runs": "212",
+      "wkts": "12",
+      "ave": "17.67",
+      "econ": "6.9508",
+      "w3plus": "1",
+      "w4plus": "1",
+      "w5plus": "1"
+    }
+  },
+  "102165|2025 T25 Regular Season|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2025 T25 Regular Season",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "14",
+      "inns": "7",
+      "no": "5",
+      "runs": "60",
+      "ave": "30.00",
+      "hs": "23",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "3",
+      "sixes": "1"
+    },
+    "bowling": {
+      "mat": "14",
+      "overs": "51.2",
+      "mdns": "0",
+      "runs": "333",
+      "wkts": "14",
+      "ave": "23.79",
+      "econ": "6.5039",
+      "w3plus": "1",
+      "w4plus": "0",
+      "w5plus": "0"
+    }
+  },
+  "102165|2024 T25 Regular Season|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2024 T25 Regular Season",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "16",
+      "inns": "10",
+      "no": "5",
+      "runs": "60",
+      "ave": "12.00",
+      "hs": "23",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "4",
+      "sixes": "0"
+    },
+    "bowling": {
+      "mat": "16",
+      "overs": "57.1",
+      "mdns": "1",
+      "runs": "439",
+      "wkts": "17",
+      "ave": "25.82",
+      "econ": "7.6883",
+      "w3plus": "1",
+      "w4plus": "0",
+      "w5plus": "0"
+    }
+  },
+  "102165|2023 Morning T25|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2023 Morning T25",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "12",
+      "inns": "7",
+      "no": "6",
+      "runs": "23",
+      "ave": "23.00",
+      "hs": "7",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "2",
+      "sixes": "0"
+    },
+    "bowling": {
+      "mat": "12",
+      "overs": "41.0",
+      "mdns": "1",
+      "runs": "282",
+      "wkts": "10",
+      "ave": "28.20",
+      "econ": "6.8780",
+      "w3plus": "1",
+      "w4plus": "0",
+      "w5plus": "0"
+    }
+  },
+  "102165|2022 Morning T25|Division 2B|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2022 Morning T25",
+    "division": "Division 2B",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "14",
+      "inns": "5",
+      "no": "3",
+      "runs": "9",
+      "ave": "4.50",
+      "hs": "4",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "1",
+      "sixes": "0"
+    },
+    "bowling": {
+      "mat": "14",
+      "overs": "42.0",
+      "mdns": "1",
+      "runs": "255",
+      "wkts": "11",
+      "ave": "23.18",
+      "econ": "6.0714",
+      "w3plus": "0",
+      "w4plus": "0",
+      "w5plus": "0"
+    }
+  },
+  "110830|2026 T20 Regular Season|Division B|GTA Peshwas": {
+    "playerId": "110830",
+    "club": "GTA Peshwas",
+    "season": "2026 T20 Regular Season",
+    "division": "Division B",
+    "team": "GTA Peshwas",
+    "batting": {
+      "mat": "11",
+      "inns": "10",
+      "no": "5",
+      "runs": "47",
+      "ave": "9.40",
+      "hs": "13",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "2",
+      "sixes": "0"
+    },
+    "bowling": {
+      "mat": "11",
+      "overs": "33.0",
+      "mdns": "0",
+      "runs": "283",
+      "wkts": "9",
+      "ave": "31.44",
+      "econ": "8.5758",
+      "w3plus": "0",
+      "w4plus": "0",
+      "w5plus": "0"
+    }
+  },
+  "111144|2026 50-Overs Regular Season|Division D|GTA Mitron": {
+    "playerId": "111144",
+    "club": "GTA Mitron",
+    "season": "2026 50-Overs Regular Season",
+    "division": "Division D",
+    "team": "GTA Mitron",
+    "batting": {
+      "mat": "3",
+      "inns": "2",
+      "no": "1",
+      "runs": "5",
+      "ave": "5.00",
+      "hs": "4",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "0",
+      "sixes": "0"
+    },
+    "bowling": {
+      "mat": "3",
+      "overs": "24.5",
+      "mdns": "3",
+      "runs": "75",
+      "wkts": "10",
+      "ave": "7.50",
+      "econ": "3.0612",
+      "w3plus": "2",
+      "w4plus": "2",
+      "w5plus": "0"
+    }
+  }
+}
