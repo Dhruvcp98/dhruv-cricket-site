@@ -1,0 +1,38 @@
+name: Watch BEDCL stats
+
+# Runs every morning at 12:10 UTC (08:10 Toronto in summer, 07:10 in winter).
+# Also runnable on demand from the Actions tab.
+on:
+  schedule:
+    - cron: '10 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Poll BEDCL
+        id: poll
+        run: node scripts/check-bedcl-stats.mjs
+
+      - name: Open a pull request if anything moved
+        if: steps.poll.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: stats/bedcl-refresh
+          base: main
+          title: "Stats refresh: ${{ steps.poll.outputs.count }} BEDCL change(s)"
+          body-path: stats-summary.md
+          commit-message: "Refresh BEDCL snapshot"
+          add-paths: data/bedcl-snapshot.json
+          delete-branch: true
