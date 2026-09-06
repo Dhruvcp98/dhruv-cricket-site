@@ -1,35 +1,4 @@
 {
-  "102165|2026 T25 Regular Season|Division H|Toronto Peshwas": {
-    "playerId": "102165",
-    "club": "Toronto Peshwas",
-    "season": "2026 T25 Regular Season",
-    "division": "Division H",
-    "team": "Toronto Peshwas",
-    "batting": {
-      "mat": "11",
-      "inns": "6",
-      "no": "5",
-      "runs": "43",
-      "ave": "43.00",
-      "hs": "26",
-      "hundreds": "0",
-      "fifties": "0",
-      "fours": "3",
-      "sixes": "1"
-    },
-    "bowling": {
-      "mat": "11",
-      "overs": "36.5",
-      "mdns": "1",
-      "runs": "247",
-      "wkts": "15",
-      "ave": "16.47",
-      "econ": "6.7059",
-      "w3plus": "1",
-      "w4plus": "1",
-      "w5plus": "1"
-    }
-  },
   "102165|2025 T25 Regular Season|Division H|Toronto Peshwas": {
     "playerId": "102165",
     "club": "Toronto Peshwas",
@@ -154,6 +123,37 @@
       "w5plus": "0"
     }
   },
+  "102165|2026 T25 Regular Season|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2026 T25 Regular Season",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "mat": "12",
+      "inns": "6",
+      "no": "5",
+      "runs": "43",
+      "ave": "43.00",
+      "hs": "26",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "3",
+      "sixes": "1"
+    },
+    "bowling": {
+      "mat": "12",
+      "overs": "36.5",
+      "mdns": "1",
+      "runs": "247",
+      "wkts": "15",
+      "ave": "16.47",
+      "econ": "6.7671",
+      "w3plus": "1",
+      "w4plus": "1",
+      "w5plus": "1"
+    }
+  },
   "110830|2026 T20 Regular Season|Division B|GTA Peshwas": {
     "playerId": "110830",
     "club": "GTA Peshwas",
@@ -192,7 +192,7 @@
     "division": "Division D",
     "team": "GTA Mitron",
     "batting": {
-      "mat": "5",
+      "mat": "6",
       "inns": "2",
       "no": "1",
       "runs": "5",
@@ -204,7 +204,7 @@
       "sixes": "0"
     },
     "bowling": {
-      "mat": "5",
+      "mat": "6",
       "overs": "30.5",
       "mdns": "4",
       "runs": "121",
