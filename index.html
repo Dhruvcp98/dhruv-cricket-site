@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#16131C">
-<meta name="description" content="Dhruv Patel — all-rounder, Greater Toronto Area. 251 matches, 216 wickets, career-best 6/12 with a hat-trick. Verified stats and sponsorship enquiries.">
+<meta name="description" content="Dhruv Patel — all-rounder, Greater Toronto Area. 254 matches, 220 wickets, career-best 6/12 with a hat-trick. Verified stats and sponsorship enquiries.">
 <link rel="canonical" href="https://dhruv-patel-cricket.netlify.app/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Dhruv Patel">
@@ -18,18 +18,18 @@
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Dhruv Patel — Cricket">
 <meta property="og:title" content="Dhruv Patel — All-Rounder, Greater Toronto Area">
-<meta property="og:description" content="251 matches · 216 wickets · 571 runs. Career-best 6/12 with a hat-trick. Captain of Super 6ixers, Vice-Captain of Toronto Peshwas. Verified career stats and 2026 sponsorship enquiries.">
+<meta property="og:description" content="254 matches · 220 wickets · 607 runs. Career-best 6/12 with a hat-trick. Captain of Super 6ixers, Vice-Captain of Toronto Peshwas. Verified career stats and 2026 sponsorship enquiries.">
 <meta property="og:url" content="https://dhruv-patel-cricket.netlify.app/">
 <meta property="og:image" content="https://dhruv-patel-cricket.netlify.app/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Dhruv Patel in Toronto Peshwas kit beside his career figures: 251 matches, 216 wickets, 571 runs.">
+<meta property="og:image:alt" content="Dhruv Patel in Toronto Peshwas kit beside his career figures: 254 matches, 220 wickets, 607 runs.">
 <meta property="og:locale" content="en_CA">
 <meta property="profile:first_name" content="Dhruv">
 <meta property="profile:last_name" content="Patel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dhruv Patel — All-Rounder, Greater Toronto Area">
-<meta name="twitter:description" content="251 matches · 216 wickets · 571 runs. Career-best 6/12 with a hat-trick. Verified stats and 2026 sponsorship enquiries.">
+<meta name="twitter:description" content="254 matches · 220 wickets · 607 runs. Career-best 6/12 with a hat-trick. Verified stats and 2026 sponsorship enquiries.">
 <meta name="twitter:image" content="https://dhruv-patel-cricket.netlify.app/og-card.jpg">
 <meta name="twitter:image:alt" content="Dhruv Patel career summary card.">
 
@@ -47,7 +47,7 @@
   "url": "https://dhruv-patel-cricket.netlify.app/",
   "image": "https://dhruv-patel-cricket.netlify.app/og-card.jpg",
   "jobTitle": "Cricket All-Rounder",
-  "description": "Right-arm medium pace bowler and middle-order batter based in the Greater Toronto Area. 251 matches, 216 wickets, 571 runs across 11 GTA leagues.",
+  "description": "Right-arm medium pace bowler and middle-order batter based in the Greater Toronto Area. 254 matches, 220 wickets, 607 runs across 11 GTA leagues.",
   "nationality": "Canadian",
   "address": {
     "@type": "PostalAddress",
@@ -463,6 +463,18 @@
     font-size:10px; letter-spacing:.13em; text-transform:uppercase;
     padding:7px 10px;
   }
+  /* Year-by-year: match volume bar under each season label */
+  #byyear .yb-season{ display:block; font-weight:700; }
+  #byyear .vol{
+    display:block; height:3px; margin-top:6px; border-radius:2px;
+    background:var(--violet-dp); opacity:.42; min-width:6px;
+  }
+  #byyear tfoot td{
+    background:#FAF9FC; font-weight:700;
+    border-top:2px solid var(--line); border-bottom:none;
+  }
+  #byyear tfoot td:first-child{ font-family:'Inter',sans-serif; }
+
   .table-footnote{
     margin:0; padding:11px 16px 14px; font-size:11.5px;
     color:var(--muted); line-height:1.5; border-top:1px solid var(--line-2);
@@ -485,12 +497,16 @@
     #seasons .stats th:nth-child(10), #seasons .stats td:nth-child(10){ display:none; }
     #averages .stats th:nth-child(9), #averages .stats td:nth-child(9),
     #averages .stats th:nth-child(10), #averages .stats td:nth-child(10){ display:none; }
+    #byyear .stats th:nth-child(3), #byyear .stats td:nth-child(3),
+    #byyear .stats th:nth-child(5), #byyear .stats td:nth-child(5),
+    #byyear .stats th:nth-child(10), #byyear .stats td:nth-child(10){ display:none; }
   }
   @media (max-width:520px){
     #seasons .stats th:nth-child(4), #seasons .stats td:nth-child(4),
     #seasons .stats th:nth-child(7), #seasons .stats td:nth-child(7){ display:none; }
     #averages .stats th:nth-child(4), #averages .stats td:nth-child(4),
     #averages .stats th:nth-child(8), #averages .stats td:nth-child(8){ display:none; }
+    #byyear .stats th:nth-child(6), #byyear .stats td:nth-child(6){ display:none; }
     .stats td, .stats th{ padding:9px 7px; }
     .stats td:first-child{ min-width:0; font-size:12.5px; }
   }
@@ -766,14 +782,15 @@
     </div>
 
     <div class="hero-keystats">
-      <div class="hk"><b>251</b><span>Matches</span></div>
-      <div class="hk"><b>216</b><span>Wickets</span></div>
-      <div class="hk"><b>571</b><span>Runs</span></div>
+      <div class="hk"><b>254</b><span>Matches</span></div>
+      <div class="hk"><b>220</b><span>Wickets</span></div>
+      <div class="hk"><b>607</b><span>Runs</span></div>
     </div>
 
     <nav class="hero-tabs" aria-label="Section shortcuts">
       <a href="#highlights" class="active">Overview</a>
       <a href="#averages">Averages</a>
+      <a href="#byyear">By Year</a>
       <a href="#seasons">Seasons</a>
       <a href="#matches">Matches</a>
       <a href="#follow">Follow</a>
@@ -840,12 +857,12 @@
         </div>
         <div class="hl-card">
           <span class="tag">2026 Form</span>
-          <b>16.47 avg</b>
+          <b>16.06 avg</b>
           <span>Bowling average this T25 season — a career-best year with the ball</span>
         </div>
         <div class="hl-card">
           <span class="tag">Workhorse</span>
-          <b>732 overs</b>
+          <b>749 overs</b>
           <span>Bowled across all formats — trusted with the ball in every phase</span>
         </div>
       </div>
@@ -855,7 +872,7 @@
     <div class="card" id="averages">
       <div class="card-head">
         <h2>Career Averages</h2>
-        <span class="sub">All leagues combined · updated Aug 2026</span>
+        <span class="sub">All leagues combined · updated Sep 2026</span>
       </div>
       <div class="stat-tabs" role="tablist">
         <button class="active" role="tab" aria-selected="true" data-tab="bowling">Bowling</button>
@@ -872,15 +889,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>T25</td><td>94</td><td>303.3</td><td>2048</td><td class="hl">92</td><td class="hl">6/12</td><td>22.26</td><td>6.75</td><td>19.8</td><td>1</td></tr>
-              <tr><td>T10</td><td>55</td><td>131.4</td><td>1029</td><td class="hl">53</td><td class="hl">4/14</td><td>19.42</td><td>7.81</td><td>14.9</td><td>2</td></tr>
-              <tr><td>T20</td><td>76</td><td>203.5</td><td>1789</td><td class="hl">43</td><td>3/28</td><td>41.60</td><td>8.78</td><td>28.4</td><td>0</td></tr>
-              <tr><td>One Day</td><td>20</td><td>79.4</td><td>394</td><td class="hl">23</td><td class="hl">4/11</td><td class="hl">17.13</td><td class="hl">4.95</td><td>20.8</td><td>2</td></tr>
-              <tr><td>100-Ball</td><td>6</td><td>13.2</td><td>171</td><td class="hl">5</td><td>3/50</td><td>34.20</td><td>12.83</td><td>16.0</td><td>0</td></tr>
+              <tr><td>T25</td><td>95</td><td>306.3</td><td>2058</td><td class="hl">93</td><td class="hl">6/12</td><td>22.13</td><td>6.71</td><td>19.8</td><td>1</td></tr>
+              <tr><td>T10</td><td>55</td><td>131.4</td><td>1029</td><td class="hl">53</td><td class="hl">4/14</td><td>19.42</td><td>7.82</td><td>14.9</td><td>2</td></tr>
+              <tr><td>T20</td><td>77</td><td>207.5</td><td>1816</td><td class="hl">45</td><td>3/28</td><td>40.36</td><td>8.74</td><td>27.7</td><td>0</td></tr>
+              <tr><td>One Day</td><td>21</td><td>89.4</td><td>431</td><td class="hl">24</td><td class="hl">4/11</td><td class="hl">17.96</td><td class="hl">4.81</td><td>22.4</td><td>2</td></tr>
+              <tr><td>100-Ball</td><td>6</td><td>13.2</td><td>171</td><td class="hl">5</td><td>3/50</td><td>34.20</td><td>12.82</td><td>16.0</td><td>0</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-footnote">BEDCL figures (84 matches, 86 wickets, 2022–26 — incl. T20 for GTA Peshwas and 50-overs for GTA Mitron) taken from the official BEDCL stats portal, which is scored separately from CricClubs. All other leagues from CricClubs records. Format totals reconcile to <b>251 matches and 216 wickets</b>.</p>
+        <p class="table-footnote">BEDCL figures (86 matches, 88 wickets, 2022–26 — incl. T20 for GTA Peshwas and 50-overs for GTA Mitron) taken from the official BEDCL stats portal, which is scored separately from CricClubs. All other leagues from CricClubs records. Format totals reconcile to <b>254 matches and 220 wickets</b>.</p>
       </div>
 
       <div class="tab-panel" id="panel-batting" role="tabpanel">
@@ -893,16 +910,43 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>T25</td><td>94</td><td>51</td><td>29</td><td class="hl">254</td><td class="hl">26</td><td>11.55</td><td>1</td><td>—</td><td>—</td></tr>
-              <tr><td>T20</td><td>76</td><td>35</td><td>21</td><td class="hl">193</td><td>25</td><td class="hl">13.79</td><td>1</td><td>—</td><td>—</td></tr>
+              <tr><td>T25</td><td>95</td><td>52</td><td>30</td><td class="hl">259</td><td class="hl">26</td><td>11.77</td><td>0</td><td>18</td><td>2</td></tr>
+              <tr><td>T20</td><td>77</td><td>36</td><td>22</td><td class="hl">205</td><td>25</td><td class="hl">14.64</td><td>1</td><td>8</td><td>4</td></tr>
               <tr><td>T10</td><td>55</td><td>17</td><td>9</td><td class="hl">79</td><td>13</td><td>9.88</td><td>0</td><td>1</td><td>0</td></tr>
-              <tr><td>One Day</td><td>20</td><td>8</td><td>4</td><td class="hl">41</td><td>21</td><td>10.25</td><td>0</td><td>3</td><td>0</td></tr>
+              <tr><td>One Day</td><td>21</td><td>9</td><td>4</td><td class="hl">60</td><td>21</td><td>12.00</td><td>0</td><td>3</td><td>0</td></tr>
               <tr><td>100-Ball</td><td>6</td><td>1</td><td>1</td><td class="hl">4</td><td>4</td><td>—</td><td>0</td><td>0</td><td>0</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-footnote">Lower-middle-order finisher's profile: 21 not-outs in 35 T20 innings. BEDCL batting from the official BEDCL portal; boundary counts (4s/6s) shown only where the source records them.</p>
+        <p class="table-footnote">Lower-middle-order finisher's profile: 66 not-outs in 115 career innings, 22 of them in 36 T20 innings. BEDCL batting from the official BEDCL portal; boundary counts (4s/6s) are only as complete as each league's scoring.</p>
       </div>
+    </div>
+
+    <!-- Year by year -->
+    <div class="card" id="byyear">
+      <div class="card-head">
+        <h2>Year by Year</h2>
+        <span class="sub">Games played &amp; full record, every season</span>
+      </div>
+      <div class="table-scroll">
+        <table class="stats">
+          <thead>
+            <tr>
+              <th scope="col">Season</th><th scope="col">Mat</th><th scope="col">Comps</th>
+              <th scope="col">Runs</th><th scope="col">HS</th><th scope="col">Bat Ave</th>
+              <th scope="col">Overs</th><th scope="col">Wkts</th><th scope="col">Bowl Ave</th><th scope="col">Econ</th>
+            </tr>
+          </thead>
+          <tbody id="ybyRows"></tbody>
+          <tfoot>
+            <tr>
+              <td>Career</td><td>254</td><td>35</td><td>607</td><td>26</td><td>12.39</td>
+              <td>749.0</td><td class="hl">220</td><td>25.02</td><td>7.35</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="table-footnote">Match volume peaked at <b>65 games in 2025</b> across eight competitions; 2026 stands at 62 with the T25 and 50-over seasons still running. Best wicket haul came in <b>2024 (64 wickets)</b>, best bowling average in <b>2026 (21.82)</b>, narrowly ahead of 2024 — and the economy rate has stayed under 8 in every dated season. &ldquo;Comps&rdquo; counts distinct competition-seasons played that year. Six Brampton Championship 100-ball games are grouped as undated because that league&rsquo;s records carry no season year.</p>
     </div>
 
     <!-- Season by season -->
@@ -921,12 +965,12 @@
           <tbody id="sbRows"></tbody>
         </table>
       </div>
-      <p class="table-footnote">Bowling average improving four straight windows: 28.20 (2023) → 25.82 (2024) → 23.79 (2025) → <b>16.47 (2026)</b>. Also in 2026: 9 wickets @ 31.44 in T20 for GTA Peshwas and 10 wickets @ 12.10 across five 50-over games for GTA Mitron.</p>
+      <p class="table-footnote">BEDCL T25 bowling average improving four straight windows: 28.20 (2023) → 25.82 (2024) → 23.79 (2025) → <b>16.06 (2026)</b>. Also in 2026: 11 wickets @ 14.36 across six 50-over games for GTA Mitron (incl. 4/11), and 9 wickets @ 31.44 in T20 for GTA Peshwas.</p>
     </div>
 
     <!-- Recent matches -->
     <div class="card" id="matches">
-      <div class="card-head"><h2>Recent Matches</h2><span class="sub">Aug 2026 · BEDCL portal + CricClubs</span></div>
+      <div class="card-head"><h2>Recent Matches</h2><span class="sub">Sep 2026 · BEDCL portal + CricClubs</span></div>
       <div class="table-scroll">
         <table class="stats">
           <thead>
@@ -976,7 +1020,7 @@
           </tbody>
         </table>
       </div>
-      <p class="table-footnote">All fixtures listed above are ratified and <b>included</b> in the career totals — the Aug 14 and Aug 16 BEDCL games have since been confirmed by the league. Career totals are current to Aug 30, 2026 and include seven further fixtures played since Aug 17 whose individual scorecards are not yet listed here.</p>
+      <p class="table-footnote">All fixtures listed above are ratified and <b>included</b> in the career totals — the Aug 14 and Aug 16 BEDCL games have since been confirmed by the league. Career totals are current to <b>Sep 9, 2026</b> and include further fixtures played since Aug 17 whose individual scorecards are not yet listed here.</p>
     </div>
 
     <!-- League footprint -->
@@ -1084,40 +1128,41 @@
 
   // ---- Season rows with wicket trend bars ----
   const SB=[
-{y:'2026',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:11,r:43,hs:26,ba:'43.00',o:'36.5',w:15,bw:'16.47',e:'6.71',hi:1},
-{y:'2026',c:'MCL T20 · Div 3',t:'Super 6ixers',m:14,r:99,hs:25,ba:'24.75',o:'35.0',w:7,bw:'42.29',e:'8.46'},
+{y:'2026',c:'MCL T20 · Div 3',t:'Super 6ixers',m:15,r:111,hs:25,ba:'27.75',o:'39.0',w:9,bw:'35.89',e:'8.28'},
+{y:'2026',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:12,r:48,hs:26,ba:'48.00',o:'39.5',w:16,bw:'16.06',e:'6.45'},
 {y:'2026',c:'BEDCL T20 · Div B',t:'GTA Peshwas',m:12,r:47,hs:13,ba:'9.40',o:'33.0',w:9,bw:'31.44',e:'8.58'},
-{y:'2026',c:'Lakeshore T10',t:'Super 6ixers',m:5,r:19,hs:13,ba:'9.50',o:'14.0',w:7,bw:'14.43',e:'7.21'},
 {y:'2026',c:'MCL T25 · Div 1',t:'Toronto Peshwas',m:8,r:15,hs:7,ba:'2.50',o:'18.5',w:5,bw:'21.20',e:'5.63'},
+{y:'2026',c:'BEDCL 50-over · Div D',t:'GTA Mitron',m:6,r:24,hs:19,ba:'12.00',o:'40.5',w:11,bw:'14.36',e:'3.87',hi:1},
+{y:'2026',c:'Lakeshore T10',t:'Super 6ixers',m:5,r:19,hs:13,ba:'9.50',o:'14.0',w:7,bw:'14.43',e:'7.21'},
 {y:'2026',c:'MCL One Day',t:'Toronto Peshwas',m:2,r:4,hs:4,ba:'—',o:'7.0',w:2,bw:'23.00',e:'6.57'},
-{y:'2026',c:'BEDCL 50-over · Div D',t:'GTA Mitron',m:5,r:5,hs:4,ba:'5.00',o:'30.5',w:10,bw:'12.10',e:'3.92',hi:1},
 {y:'2026',c:'TMCC T20',t:'Thunderbolts CC',m:2,r:0,hs:0,ba:'—',o:'7.0',w:1,bw:'35.00',e:'5.00'},
-{y:'2025',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:14,r:60,hs:23,ba:'30.00',o:'51.2',w:14,bw:'23.79',e:'6.50'},
-{y:'2025',c:'MCL T25',t:'Toronto Peshwas',m:11,r:44,hs:16,ba:'11.00',o:'36.2',w:14,bw:'19.43',e:'7.49'},
+{y:'2025',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:14,r:60,hs:23,ba:'30.00',o:'51.2',w:14,bw:'23.79',e:'6.49'},
+{y:'2025',c:'Brampton Championship T20',t:'Toronto Peshwas',m:12,r:22,hs:11,ba:'22.00',o:'32.3',w:3,bw:'108.67',e:'10.03'},
 {y:'2025',c:'Lakeshore T10',t:'Super 6ixers',m:11,r:29,hs:12,ba:'9.67',o:'28.0',w:8,bw:'28.25',e:'8.07'},
-{y:'2025',c:'TMCC T25',t:'Thunderbolts CC',m:8,r:0,hs:0,ba:'0.00',o:'20.0',w:6,bw:'19.00',e:'5.70'},
+{y:'2025',c:'MCL T25',t:'Toronto Peshwas',m:11,r:44,hs:16,ba:'11.00',o:'36.2',w:14,bw:'19.43',e:'7.49'},
+{y:'2025',c:'TMCC T25',t:'Thunderbolts CC',m:8,r:0,hs:0,ba:'0.00',o:'20.0',w:6,bw:'19.00',e:'5.70',hi:1},
 {y:'2025',c:'MCL T20',t:'Toronto Peshwas',m:4,r:13,hs:7,ba:'—',o:'9.5',w:2,bw:'45.50',e:'9.25'},
 {y:'2025',c:'MCL T10',t:'Toronto Peshwas',m:4,r:12,hs:6,ba:'—',o:'7.5',w:4,bw:'18.50',e:'9.45'},
-{y:'2024',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:16,r:60,hs:23,ba:'12.00',o:'57.1',w:17,bw:'25.82',e:'7.69'},
+{y:'2025',c:'Vaughan Premier T20',t:'Stouffville CC',m:1,r:3,hs:3,ba:'3.00',o:'1.0',w:0,bw:'—',e:'18.00'},
+{y:'2024',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:16,r:60,hs:23,ba:'12.00',o:'57.1',w:17,bw:'25.82',e:'7.68'},
+{y:'2024',c:'Brampton Championship T20',t:'Toronto Peshwas',m:14,r:6,hs:4,ba:'6.00',o:'44.3',w:15,bw:'22.93',e:'7.73'},
 {y:'2024',c:'Lakeshore T10',t:'Toronto Peshwas',m:11,r:8,hs:5,ba:'8.00',o:'28.5',w:18,bw:'10.72',e:'6.69',hi:1},
 {y:'2024',c:'MCL One Day',t:'Toronto Peshwas',m:6,r:3,hs:3,ba:'—',o:'22.5',w:5,bw:'22.80',e:'4.99'},
 {y:'2024',c:'YRCA One Day',t:'Stouffville CC',m:4,r:4,hs:4,ba:'2.00',o:'13.0',w:6,bw:'12.83',e:'5.92'},
 {y:'2024',c:'MCL T10',t:'Toronto Peshwas',m:3,r:6,hs:4,ba:'6.00',o:'7.0',w:2,bw:'37.00',e:'10.57'},
+{y:'2024',c:'YRCA T20',t:'Stouffville CC',m:3,r:2,hs:2,ba:'2.00',o:'6.0',w:1,bw:'72.00',e:'12.00'},
+{y:'2024',c:'Markham Premier One Day',t:'Stouffville CC',m:2,r:25,hs:21,ba:'25.00',o:'6.0',w:0,bw:'—',e:'6.00'},
+{y:'2024',c:'Toronto District CA One Day',t:'Stouffville CC',m:1,r:0,hs:0,ba:'—',o:'0.0',w:0,bw:'—',e:'—'},
 {y:'2024',c:'MCL T20',t:'Toronto Peshwas',m:1,r:1,hs:1,ba:'—',o:'3.0',w:0,bw:'—',e:'17.67'},
-{y:'2023',c:'Lakeshore T10',t:'Toronto Peshwas',m:18,r:0,hs:0,ba:'0.00',o:'39.0',w:12,bw:'26.58',e:'8.18'},
-{y:'2023',c:'BEDCL T25 · Div H',t:'Toronto Peshwas',m:12,r:23,hs:7,ba:'23.00',o:'41.0',w:10,bw:'28.20',e:'6.88'},
+{y:'2023',c:'Lakeshore T10',t:'Toronto Peshwas',m:18,r:0,hs:0,ba:'0.00',o:'39.0',w:12,bw:'26.58',e:'8.18',hi:1},
+{y:'2023',c:'BEDCL Morning T25 · Div H',t:'Toronto Peshwas',m:12,r:23,hs:7,ba:'23.00',o:'41.0',w:10,bw:'28.20',e:'6.88'},
 {y:'2023',c:'BPL Canada T20',t:'Toronto Peshwas',m:8,r:0,hs:0,ba:'0.00',o:'15.0',w:1,bw:'144.00',e:'9.60'},
-{y:'2022',c:'BEDCL T25 · Div 2B',t:'Toronto Peshwas',m:14,r:9,hs:4,ba:'4.50',o:'42.0',w:11,bw:'23.18',e:'6.07'},
+{y:'2023',c:'TDF Cricket Club T20',t:'Stouffville CC',m:1,r:0,hs:0,ba:'—',o:'3.0',w:2,bw:'13.00',e:'8.67'},
+{y:'2022',c:'BEDCL Morning T25 · Div 2B',t:'Toronto Peshwas',m:14,r:9,hs:4,ba:'4.50',o:'42.0',w:11,bw:'23.18',e:'6.07',hi:1},
 {y:'2022',c:'Lakeshore T10',t:'Toronto Peshwas',m:3,r:5,hs:5,ba:'—',o:'7.0',w:2,bw:'21.00',e:'6.00'},
 {y:'2022',c:'MCL T20',t:'Toronto Peshwas',m:2,r:0,hs:0,ba:'—',o:'8.0',w:1,bw:'57.00',e:'7.12'},
 {y:'2022',c:'BPL Canada T20',t:'Toronto Peshwas',m:2,r:0,hs:0,ba:'—',o:'6.0',w:1,bw:'44.00',e:'7.33'},
-{y:'n/d',c:'Brampton Cricket Championship T20',t:'Toronto Peshwas',m:26,r:28,hs:11,ba:'14.00',o:'77.0',w:18,bw:'37.22',e:'8.70'},
-{y:'n/d',c:'Brampton Cricket Championship 100-Ball',t:'Toronto Peshwas',m:6,r:4,hs:4,ba:'—',o:'13.2',w:5,bw:'34.20',e:'12.83'},
-{y:'n/d',c:'YRCA T20',t:'Stouffville CC',m:3,r:2,hs:2,ba:'2.00',o:'6.0',w:1,bw:'72.00',e:'12.00'},
-{y:'n/d',c:'Markham Premier One Day',t:'Stouffville CC',m:2,r:25,hs:21,ba:'25.00',o:'6.0',w:0,bw:'—',e:'6.00'},
-{y:'n/d',c:'Vaughan Premier T20',t:'Stouffville CC',m:1,r:3,hs:3,ba:'3.00',o:'1.0',w:0,bw:'—',e:'18.00'},
-{y:'n/d',c:'TDF Cricket Club T20',t:'Stouffville CC',m:1,r:0,hs:0,ba:'—',o:'3.0',w:2,bw:'13.00',e:'8.67'},
-{y:'n/d',c:'Toronto District CA One Day',t:'Stouffville CC',m:1,r:0,hs:0,ba:'—',o:'0.0',w:0,bw:'—',e:'—'}];
+{y:'n/d',c:'Brampton Championship 100-Ball',t:'Toronto Peshwas',m:6,r:4,hs:4,ba:'—',o:'13.2',w:5,bw:'34.20',e:'12.82',hi:1}];
 const sbBody=document.getElementById('sbRows');
 let curY=null;
 SB.forEach(x=>{
@@ -1127,14 +1172,38 @@ const tr=document.createElement('tr');
 tr.innerHTML='<td>'+x.c+'</td><td class="tm">'+x.t+'</td><td>'+x.m+'</td><td>'+x.r+'</td><td>'+x.hs+'</td><td>'+x.ba+'</td><td>'+x.o+'</td><td class="hl">'+x.w+'</td><td'+(x.hi?' class="hl"':'')+'>'+x.bw+'</td><td>'+x.e+'</td>';
 sbBody.appendChild(tr);});
 
+// ---- Year-by-year aggregate rows (games played per season) ----
+const YBY=[
+{y:'2026',m:62,c:8,r:268,hs:26,ba:'13.40',o:'199.3',w:60,bw:'21.82',e:'6.56'},
+{y:'2025',m:65,c:8,r:183,hs:23,ba:'15.25',o:'186.5',w:51,bw:'28.51',e:'7.78'},
+{y:'2024',m:61,c:10,r:115,hs:23,ba:'9.58',o:'188.2',w:64,bw:'21.91',e:'7.44'},
+{y:'2023',m:39,c:4,r:23,hs:7,ba:'7.67',o:'98.0',w:25,bw:'30.84',e:'7.87'},
+{y:'2022',m:21,c:4,r:14,hs:5,ba:'7.00',o:'63.0',w:15,bw:'26.53',e:'6.32'},
+{y:'n/d',m:6,c:1,r:4,hs:4,ba:'\u2014',o:'13.2',w:5,bw:'34.20',e:'12.82'}];
+const ybBody=document.getElementById('ybyRows');
+if(ybBody){
+  const maxM=Math.max.apply(null,YBY.map(x=>x.m));
+  const bestW=Math.max.apply(null,YBY.map(x=>x.w));
+  YBY.forEach(x=>{
+    const tr=document.createElement('tr');
+    const label=(x.y==='n/d'?'Undated':x.y);
+    const pct=Math.round((x.m/maxM)*100);
+    tr.innerHTML='<td><span class="yb-season">'+label+'</span>'+
+      '<span class="vol" style="width:'+pct+'%" title="'+x.m+' matches"></span></td>'+
+      '<td class="hl">'+x.m+'</td><td>'+x.c+'</td><td>'+x.r+'</td><td>'+x.hs+'</td><td>'+x.ba+'</td>'+
+      '<td>'+x.o+'</td><td'+(x.w===bestW?' class="hl"':'')+'>'+x.w+'</td><td>'+x.bw+'</td><td>'+x.e+'</td>';
+    ybBody.appendChild(tr);
+  });
+}
+
   // ---- League footprint ----
   const leagues = [
+    { name:'BEDCL \u2014 Toronto Peshwas, GTA Peshwas &amp; GTA Mitron (official portal)', mat:86, runs:271, wkts:88 },
+    { name:'Mississauga CL \u2014 Toronto Peshwas &amp; Super 6ixers', mat:56, runs:209, wkts:44 },
     { name:'Lakeshore CL (T10) \u2014 Toronto Peshwas &amp; Super 6ixers', mat:48, runs:61, wkts:47 },
-    { name:'Mississauga CL \u2014 Toronto Peshwas &amp; Super 6ixers', mat:54, runs:197, wkts:40 },
-    { name:'BEDCL \u2014 Toronto Peshwas &amp; GTA Mitron (official portal)', mat:79, runs:238, wkts:83 },
-    { name:'Brampton Cricket Championship — Toronto Peshwas', mat:32, runs:32, wkts:23 },
+    { name:'Brampton Cricket Championship \u2014 Toronto Peshwas', mat:32, runs:32, wkts:23 },
     { name:'BPL Canada \u2014 Toronto Peshwas', mat:10, runs:0, wkts:2 },
-    { name:'Toronto Mississauga CC \u2014 Thunderbolts CC (TBCC)', mat:9, runs:0, wkts:6 },
+    { name:'Toronto Mississauga CC \u2014 Thunderbolts CC (TBCC)', mat:10, runs:0, wkts:7 },
     { name:'York Region CA \u2014 Stouffville CC', mat:7, runs:6, wkts:7 },
     { name:'Markham Premier CL \u2014 Stouffville CC', mat:2, runs:25, wkts:0 },
     { name:'Vaughan Premier CL \u2014 Stouffville CC', mat:1, runs:3, wkts:0 },
