@@ -3,6 +3,15 @@
 // Polls the public BEDCL player endpoints, normalises them, and diffs against
 // data/bedcl-snapshot.json. Writes the new snapshot + stats-summary.md.
 // No dependencies. Node 18+. Never exits non-zero on a failed poll.
+//
+// IMPORTANT — squad-listed non-appearances:
+// The portal's season summary counts a player as having PLAYED whenever he was
+// named in a squad, even if he neither batted nor bowled. Taking `mat` at face
+// value therefore drifts upward every time Dhruv is named and does not play.
+// Those fixtures are identifiable in the per-match drill-down: the Overs cell
+// is BLANK, whereas a genuine appearance always carries an explicit figure
+// (even 0.0 or 0.5). We fetch the drill-down per season and publish
+// `matPlayed` = mat - nonAppearances. Always use matPlayed on the site.
 import { readFileSync, writeFileSync, existsSync, appendFileSync } from 'node:fs';
 
 const PLAYERS = { '102165': 'Toronto Peshwas', '110830': 'GTA Peshwas', '111144': 'GTA Mitron' };
@@ -10,6 +19,7 @@ const PLAYERS = { '102165': 'Toronto Peshwas', '110830': 'GTA Peshwas', '111144'
 // whatever the real format. Always poll all three buckets for every player.
 const BUCKETS = ['20', '25', '50'];
 const BASE = 'https://client.bedcl.cricket';
+const REST = 'https://stats.bedcl.cricket/stats_rest.php';
 const SNAP = 'data/bedcl-snapshot.json';
 const BAT = ['mat','inns','no','runs','ave','hs','hundreds','fifties','fours','sixes'];
 const BOWL = ['mat','overs','mdns','runs','wkts','ave','econ','w3plus','w4plus','w5plus'];
@@ -31,26 +41,53 @@ async function get(url, attempt = 1) {
   }
 }
 
-const rows = html => [...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map(m =>
-  [...m[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)]
-    .map(c => c[1].replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()));
+// Keep the opening <tr ...> attributes: the drill-down season/division IDs live
+// there as data-param1 / data-param2 and are not present anywhere in the text.
+const trList = html => [...html.matchAll(/<tr([^>]*)>([\s\S]*?)<\/tr>/gi)].map(m => ({
+  attrs: m[1],
+  cells: [...m[2].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)]
+    .map(c => c[1].replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim())
+}));
+
+const attr = (attrs, name) => {
+  const m = new RegExp(name + '\\s*=\\s*["\']?(\\d+)', 'i').exec(attrs || '');
+  return m ? m[1] : null;
+};
 
 // Season rows are: ['', season, 'Division H', team, ...numbers]
 // The bare word "Division" is the header cell, so require something after it.
 function parseSeasons(html, cols) {
   const out = [];
-  for (const c of rows(html)) {
+  for (const { attrs, cells: c } of trList(html)) {
     const i = c.findIndex(x => /^Division\s+\S/i.test(x));
     if (i < 1) continue;
     const season = c[i - 1];
     if (!season || /grand total/i.test(season) || /^season$/i.test(season)) continue;
     const nums = c.slice(i + 2);
     if (!nums.length) continue;
-    const rec = { season, division: c[i], team: c[i + 1] };
+    const rec = {
+      season, division: c[i], team: c[i + 1],
+      seasonId: attr(attrs, 'data-param1'),
+      divisionId: attr(attrs, 'data-param2')
+    };
     cols.forEach((k, n) => { rec[k] = nums[n] ?? null; });
     out.push(rec);
   }
   return out;
+}
+
+// Per-match drill-down. Columns: Date | # | Opposition | Ground | Overs | Mdns | Runs | Wkts | Ave
+async function squadCheck(seasonId, divisionId, playerId) {
+  const html = await get(REST + '?seasonId=' + seasonId + '&divisionId=' + divisionId +
+                         '&playerid=' + playerId + '&q=SDO');
+  const played = trList(html).map(t => t.cells)
+    .filter(c => c.length > 4 && /^\d{4}-\d{2}-\d{2}/.test(c[0]));
+  const blank = played.filter(c => !c[4] || c[4] === '');
+  return {
+    listed: played.length,
+    nonAppearances: blank.length,
+    fixtures: blank.map(c => c[0] + ' v ' + (c[2] || '?'))
+  };
 }
 
 async function collect() {
@@ -62,7 +99,9 @@ async function collect() {
           for (const r of parseSeasons(await get(BASE + '/' + file + '?playerid=' + id + '&overs=' + overs), cols)) {
             const k = id + '|' + r.season + '|' + r.division + '|' + r.team;
             data[k] ??= { playerId: id, club: PLAYERS[id], season: r.season, division: r.division, team: r.team };
-            const { season, division, team, ...stats } = r;
+            if (r.seasonId) data[k].seasonId = r.seasonId;
+            if (r.divisionId) data[k].divisionId = r.divisionId;
+            const { season, division, team, seasonId, divisionId, ...stats } = r;
             data[k][kind] = stats;
           }
         } catch (e) {
@@ -71,6 +110,31 @@ async function collect() {
         await sleep(1500); // the portal throttles hard
       }
     }
+  }
+
+  // Second pass: correct every season's match count for squad-listed non-appearances.
+  for (const [k, x] of Object.entries(data)) {
+    const raw = Number(x.bowling?.mat ?? x.batting?.mat ?? 0);
+    if (!x.seasonId || !x.divisionId) {
+      x.nonAppearances = null;         // unknown, not zero - do not silently trust `mat`
+      x.matPlayed = raw;
+      problems.push(k + ': no drill-down IDs on the season row, match count unverified');
+      continue;
+    }
+    try {
+      const s = await squadCheck(x.seasonId, x.divisionId, x.playerId);
+      x.nonAppearances = s.nonAppearances;
+      x.nonAppearanceFixtures = s.fixtures;
+      x.matPlayed = raw - s.nonAppearances;
+      if (s.listed !== raw) {
+        problems.push(k + ': drill-down lists ' + s.listed + ' fixtures but summary says mat=' + raw);
+      }
+    } catch (e) {
+      x.nonAppearances = null;
+      x.matPlayed = raw;
+      problems.push(k + ' squad check: ' + e.message);
+    }
+    await sleep(1500);
   }
   return { data, problems };
 }
@@ -85,6 +149,9 @@ function diff(a, b) {
         if (String(x[f] ?? '') !== String(y[f] ?? ''))
           out.push({ k, type: 'changed', kind, field: f, from: x[f] ?? '-', to: y[f] ?? '-' });
     }
+    for (const f of ['matPlayed','nonAppearances'])
+      if (String(a[k][f] ?? '') !== String(b[k][f] ?? ''))
+        out.push({ k, type: 'changed', kind: 'squad', field: f, from: a[k][f] ?? '-', to: b[k][f] ?? '-' });
   }
   for (const k of Object.keys(a)) if (!b[k]) out.push({ k, type: 'missing' });
   return out;
@@ -106,16 +173,26 @@ function summarise(changes, problems, after) {
     const gone = changes.filter(c => c.type === 'missing');
     if (gone.length) { L.push('**Rows that vanished** (usually a de-ratification - worth a look)\n'); gone.forEach(c => L.push('- `' + c.k + '`')); L.push(''); }
   }
-  let m = 0, r = 0, w = 0;
+
+  let m = 0, mRaw = 0, r = 0, w = 0, na = 0, unverified = 0;
+  const naList = [];
   for (const x of Object.values(after)) {
-    m += Number(x.bowling?.mat ?? x.batting?.mat ?? 0);
+    const raw = Number(x.bowling?.mat ?? x.batting?.mat ?? 0);
+    mRaw += raw;
+    m += Number(x.matPlayed ?? raw);
     r += Number(x.batting?.runs ?? 0);
     w += Number(x.bowling?.wkts ?? 0);
+    if (x.nonAppearances == null) unverified++;
+    else { na += x.nonAppearances; (x.nonAppearanceFixtures || []).forEach(f => naList.push(x.team + ' - ' + f)); }
   }
   L.push('**BEDCL totals now:** ' + m + ' matches, ' + r + ' runs, ' + w + ' wickets', '');
-  L.push('> Only ratified fixtures appear here - BEDCL excludes unratified matches until the league signs them off, so these are the publishable numbers.');
-  L.push('', 'Apply to `index.html`: the BEDCL league-footprint row, the affected season row(s) in `SB`, then let the format tables, hero and meta tags follow.');
-  if (problems.length) { L.push('', '**Endpoints that did not answer** (throttling is normal; usually recovers next run)\n'); problems.forEach(p => L.push('- ' + p)); }
+  L.push('Use **' + m + '** on the site, not the portal\'s ' + mRaw + '. The difference is ' + na +
+         ' squad-listed fixture(s) Dhruv did not play (blank overs in the per-match drill-down).');
+  if (naList.length) { L.push('', '**Squad-listed, did not play — excluded**\n'); naList.forEach(f => L.push('- ' + f)); }
+  if (unverified) L.push('', '> ' + unverified + ' season row(s) could not be squad-checked; their match counts are the portal\'s raw figure and may be inflated.');
+  L.push('', '> Only ratified fixtures appear here - BEDCL excludes unratified matches until the league signs them off, so these are the publishable numbers.');
+  L.push('', 'Apply to `index.html`: the BEDCL league-footprint row, the affected season row(s) in `SB`, then let the format tables, year table, hero and meta tags follow. Match counts come from `matPlayed`.');
+  if (problems.length) { L.push('', '**Endpoints that did not answer / need a look** (throttling is normal; usually recovers next run)\n'); problems.forEach(p => L.push('- ' + p)); }
   return L.join('\n');
 }
 
