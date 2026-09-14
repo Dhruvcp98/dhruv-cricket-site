@@ -1,41 +1,12 @@
 {
-  "102165|2026 T25 Regular Season|Division H|Toronto Peshwas": {
-    "playerId": "102165",
-    "club": "Toronto Peshwas",
-    "season": "2026 T25 Regular Season",
-    "division": "Division H",
-    "team": "Toronto Peshwas",
-    "batting": {
-      "mat": "11",
-      "inns": "6",
-      "no": "5",
-      "runs": "43",
-      "ave": "43.00",
-      "hs": "26",
-      "hundreds": "0",
-      "fifties": "0",
-      "fours": "3",
-      "sixes": "1"
-    },
-    "bowling": {
-      "mat": "11",
-      "overs": "36.5",
-      "mdns": "1",
-      "runs": "247",
-      "wkts": "15",
-      "ave": "16.47",
-      "econ": "6.7059",
-      "w3plus": "1",
-      "w4plus": "1",
-      "w5plus": "1"
-    }
-  },
   "102165|2025 T25 Regular Season|Division H|Toronto Peshwas": {
     "playerId": "102165",
     "club": "Toronto Peshwas",
     "season": "2025 T25 Regular Season",
     "division": "Division H",
     "team": "Toronto Peshwas",
+    "seasonId": "8255",
+    "divisionId": "9503",
     "batting": {
       "mat": "14",
       "inns": "7",
@@ -59,7 +30,10 @@
       "w3plus": "1",
       "w4plus": "0",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 0,
+    "nonAppearanceFixtures": [],
+    "matPlayed": 14
   },
   "102165|2024 T25 Regular Season|Division H|Toronto Peshwas": {
     "playerId": "102165",
@@ -67,6 +41,8 @@
     "season": "2024 T25 Regular Season",
     "division": "Division H",
     "team": "Toronto Peshwas",
+    "seasonId": "8249",
+    "divisionId": "9462",
     "batting": {
       "mat": "16",
       "inns": "10",
@@ -90,7 +66,10 @@
       "w3plus": "1",
       "w4plus": "0",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 0,
+    "nonAppearanceFixtures": [],
+    "matPlayed": 16
   },
   "102165|2023 Morning T25|Division H|Toronto Peshwas": {
     "playerId": "102165",
@@ -98,6 +77,8 @@
     "season": "2023 Morning T25",
     "division": "Division H",
     "team": "Toronto Peshwas",
+    "seasonId": "8243",
+    "divisionId": "9425",
     "batting": {
       "mat": "12",
       "inns": "7",
@@ -121,7 +102,10 @@
       "w3plus": "1",
       "w4plus": "0",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 0,
+    "nonAppearanceFixtures": [],
+    "matPlayed": 12
   },
   "102165|2022 Morning T25|Division 2B|Toronto Peshwas": {
     "playerId": "102165",
@@ -129,6 +113,8 @@
     "season": "2022 Morning T25",
     "division": "Division 2B",
     "team": "Toronto Peshwas",
+    "seasonId": "8235",
+    "divisionId": "9365",
     "batting": {
       "mat": "14",
       "inns": "5",
@@ -152,7 +138,49 @@
       "w3plus": "0",
       "w4plus": "0",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 2,
+    "nonAppearanceFixtures": [
+      "2022-09-10 v Royal Hawks",
+      "2022-09-25 v Royal Warriors"
+    ],
+    "matPlayed": 12
+  },
+  "102165|2026 T25 Regular Season|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2026 T25 Regular Season",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "seasonId": "8262",
+    "divisionId": "9541",
+    "batting": {
+      "mat": "13",
+      "inns": "8",
+      "no": "7",
+      "runs": "53",
+      "ave": "53.00",
+      "hs": "26",
+      "hundreds": "0",
+      "fifties": "0",
+      "fours": "5",
+      "sixes": "1"
+    },
+    "bowling": {
+      "mat": "13",
+      "overs": "43.5",
+      "mdns": "1",
+      "runs": "283",
+      "wkts": "19",
+      "ave": "14.89",
+      "econ": "6.5057",
+      "w3plus": "2",
+      "w4plus": "1",
+      "w5plus": "1"
+    },
+    "nonAppearances": 0,
+    "nonAppearanceFixtures": [],
+    "matPlayed": 13
   },
   "110830|2026 T20 Regular Season|Division B|GTA Peshwas": {
     "playerId": "110830",
@@ -160,6 +188,8 @@
     "season": "2026 T20 Regular Season",
     "division": "Division B",
     "team": "GTA Peshwas",
+    "seasonId": "8260",
+    "divisionId": "9526",
     "batting": {
       "mat": "12",
       "inns": "10",
@@ -183,7 +213,12 @@
       "w3plus": "0",
       "w4plus": "0",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 1,
+    "nonAppearanceFixtures": [
+      "2026-08-22 v Brampton Eagles"
+    ],
+    "matPlayed": 11
   },
   "111144|2026 50-Overs Regular Season|Division D|GTA Mitron": {
     "playerId": "111144",
@@ -191,29 +226,36 @@
     "season": "2026 50-Overs Regular Season",
     "division": "Division D",
     "team": "GTA Mitron",
+    "seasonId": "8261",
+    "divisionId": "9531",
     "batting": {
-      "mat": "5",
-      "inns": "2",
+      "mat": "6",
+      "inns": "3",
       "no": "1",
-      "runs": "5",
-      "ave": "5.00",
-      "hs": "4",
+      "runs": "24",
+      "ave": "12.00",
+      "hs": "19",
       "hundreds": "0",
       "fifties": "0",
       "fours": "0",
       "sixes": "0"
     },
     "bowling": {
-      "mat": "5",
-      "overs": "30.5",
-      "mdns": "4",
-      "runs": "121",
-      "wkts": "10",
-      "ave": "12.10",
-      "econ": "3.9672",
+      "mat": "6",
+      "overs": "40.5",
+      "mdns": "5",
+      "runs": "158",
+      "wkts": "11",
+      "ave": "14.36",
+      "econ": "3.9012",
       "w3plus": "2",
       "w4plus": "2",
       "w5plus": "0"
-    }
+    },
+    "nonAppearances": 1,
+    "nonAppearanceFixtures": [
+      "2026-08-23 v Shonki Canadians"
+    ],
+    "matPlayed": 5
   }
 }
