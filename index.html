@@ -792,6 +792,7 @@
       <a href="#averages">Averages</a>
       <a href="#byyear">By Year</a>
       <a href="#seasons">Seasons</a>
+      <a href="#upcoming">Fixtures</a>
       <a href="#matches">Matches</a>
       <a href="#follow">Follow</a>
       <a href="#contact">Sponsorship</a>
@@ -968,6 +969,20 @@
       <p class="table-footnote">BEDCL T25 bowling average improving four straight windows: 28.20 (2023) → 25.82 (2024) → 23.79 (2025) → <b>14.89 (2026)</b>. Also in 2026: 11 wickets @ 14.36 across five 50-over games for GTA Mitron (incl. 4/11), and 9 wickets @ 31.44 in T20 for GTA Peshwas.</p>
     </div>
 
+    <!-- Upcoming fixtures -->
+    <div class="card" id="upcoming">
+      <div class="card-head"><h2>Upcoming Fixtures</h2><span class="sub">Confirmed schedule · past dates drop off automatically</span></div>
+      <div class="table-scroll">
+        <table class="stats">
+          <thead>
+            <tr><th scope="col">Comp</th><th scope="col" style="text-align:left">Fixture</th><th scope="col">Ground</th><th scope="col">Date</th><th scope="col">Time</th></tr>
+          </thead>
+          <tbody id="fixRows"></tbody>
+        </table>
+      </div>
+      <p class="table-footnote" id="fixNote"></p>
+    </div>
+
     <!-- Recent matches -->
     <div class="card" id="matches">
       <div class="card-head"><h2>Recent Matches</h2><span class="sub">Sep 2026 · BEDCL portal + CricClubs</span></div>
@@ -1135,6 +1150,29 @@
       document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
     });
   });
+
+  // ---- Upcoming fixtures -------------------------------------------------
+  // Rendered client-side and filtered against today’s date on every load, so a
+  // schedule that stops being refreshed shrinks to empty rather than showing a
+  // sponsor a game that already happened.
+  const FIX=[
+{d:'2026-09-17',t:'7:00 PM',c:'MCL T25',f:'TCS vs Toronto Peshwas',g:'Go Green'},
+{d:'2026-09-20',t:'11:00 AM',c:'MCL T30',f:'TBD vs Toronto Peshwas',g:'Mattamy'}];
+  const fixBody=document.getElementById("fixRows");
+  if(fixBody){
+    const today=new Date(); today.setHours(0,0,0,0);
+    const live=FIX.filter(x=>new Date(x.d+"T00:00:00")>=today).sort((a,b)=>a.d.localeCompare(b.d));
+    const fmt=d=>new Date(d+"T00:00:00").toLocaleDateString("en-CA",{month:"short",day:"numeric"});
+    live.forEach(x=>{
+      const tr=document.createElement("tr");
+      tr.innerHTML="<td>"+x.c+"</td><td class=\"fixture\">"+x.f+"</td><td>"+x.g+"</td><td>"+fmt(x.d)+"</td><td>"+x.t+"</td>";
+      fixBody.appendChild(tr);
+    });
+    const note=document.getElementById("fixNote");
+    const card=document.getElementById("upcoming");
+    if(!live.length){ if(card) card.style.display="none"; }
+    else if(note){ note.textContent="Confirmed fixtures from the league schedules. Opponents shown as TBD are playoff slots not yet decided. BEDCL fixtures are not listed here — that schedule sits behind the league portal login."; }
+  }
 
   // ---- Season rows with wicket trend bars ----
   const SB=[
