@@ -1156,8 +1156,8 @@
   // schedule that stops being refreshed shrinks to empty rather than showing a
   // sponsor a game that already happened.
   const FIX=[
-{d:'2026-09-17',t:'7:00 PM',c:'MCL T25',f:'TCS vs Toronto Peshwas',g:'Go Green'},
-{d:'2026-09-20',t:'11:00 AM',c:'MCL T30',f:'TBD vs Toronto Peshwas',g:'Mattamy'}];
+{d:'2026-09-26',t:'8:00 AM',c:'BEDCL T25 Playoffs',f:'Toronto Peshwas vs Ontario Cricket Academy',g:'Creditview - B'},
+{d:'2026-09-26',t:'7:45 PM',c:'BEDCL T20 · Div B',f:'GTA Peshwas vs Canada Fortune Legends',g:'Andrew McCandless Park'}];
   const fixBody=document.getElementById("fixRows");
   if(fixBody){
     const today=new Date(); today.setHours(0,0,0,0);
@@ -1170,8 +1170,11 @@
     });
     const note=document.getElementById("fixNote");
     const card=document.getElementById("upcoming");
-    if(!live.length){ if(card) card.style.display="none"; }
-    else if(note){ note.textContent="Confirmed fixtures from the league schedules. Opponents shown as TBD are playoff slots not yet decided. BEDCL fixtures are not listed here — that schedule sits behind the league portal login."; }
+    if(!live.length){
+if(card) card.style.display="none";
+document.querySelectorAll('a[href="#upcoming"]').forEach(a=>{ a.style.display="none"; });
+}
+    else if(note){ note.textContent="Confirmed fixtures from the BEDCL and CricClubs league schedules. Opponents shown as TBD are playoff slots not yet decided."; }
   }
 
   // ---- Season rows with wicket trend bars ----
