@@ -232,11 +232,14 @@ function summarise(changes, problems, carried, after) {
     }
   }
 
+  // Column names are NOT the same across the two tables: the batting page calls
+  // its runs column "Total Runs" and the high score "Highest". Never assume.
+  const pick = (o, names) => { for (const n of names) if (o && o[n] !== undefined) return o[n]; return 0; };
   let mat = 0, runs = 0, wkts = 0;
   for (const x of Object.values(after)) {
-    mat += Number(x.bowling?.matches ?? x.batting?.matches ?? 0);
-    runs += Number(x.batting?.runs ?? 0);
-    wkts += Number(x.bowling?.wickets ?? 0);
+    mat += Number(pick(x.bowling, ['matches']) || pick(x.batting, ['matches']));
+    runs += Number(pick(x.batting, ['totalruns', 'runs']));
+    wkts += Number(pick(x.bowling, ['wickets']));
   }
   L.push('**BEDCL raw totals now:** ' + mat + ' matches, ' + runs + ' runs, ' + wkts + ' wickets', '');
   L.push('> Match count is RAW. The public season tables cannot distinguish a squad-listed non-appearance from a real one, so subtract any phantom confirmed in the drill-down before these go on the site. Runs, overs and wickets are unaffected - a phantom contributes nothing to them.');
