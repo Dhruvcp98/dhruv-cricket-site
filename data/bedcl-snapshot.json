@@ -74,6 +74,24 @@
       "average": "15.10"
     }
   },
+  "102165|2026 T25 Playoffs|Division H|Toronto Peshwas": {
+    "playerId": "102165",
+    "club": "Toronto Peshwas",
+    "season": "2026 T25 Playoffs",
+    "division": "Division H",
+    "team": "Toronto Peshwas",
+    "batting": {
+      "matches": "1",
+      "innings": "0",
+      "notouts": "0",
+      "totalruns": "0",
+      "highest": "0",
+      "100s": "0",
+      "50s": "0",
+      "average": "0.00"
+    },
+    "bowling": {}
+  },
   "102165|2025 T25 Regular Season|Division H|Toronto Peshwas": {
     "playerId": "102165",
     "club": "Toronto Peshwas",
