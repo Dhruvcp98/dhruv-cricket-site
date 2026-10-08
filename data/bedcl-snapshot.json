@@ -155,16 +155,7 @@
     "season": "2023 Morning T25",
     "division": "Division H",
     "team": "Toronto Peshwas",
-    "batting": {
-      "matches": "12",
-      "innings": "7",
-      "notouts": "6",
-      "totalruns": "23",
-      "highest": "7",
-      "100s": "0",
-      "50s": "0",
-      "average": "23.00"
-    },
+    "batting": {},
     "bowling": {
       "matches": "12",
       "overs": "41.0",
